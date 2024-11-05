@@ -1,6 +1,8 @@
 header {
   min-height: 100vh;
-  background-color: #ccccff;
+  background-image: url("/images/header-background.webp");
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: end;

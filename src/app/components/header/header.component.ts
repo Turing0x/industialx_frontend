@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'common-header',
+  selector: 'landing-header',
   standalone: true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
