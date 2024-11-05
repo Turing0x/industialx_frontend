@@ -1,5 +1,12 @@
 @font-face {
   font-family: "Centro Sans";
+  src: url("/centro-sans/PFCENTROSANSPRO-BLACK.OTF") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Centro Sans";
   src: url("/centro-sans/PFCENTROSANSPRO-BOLD.OTF") format("opentype");
   font-weight: 700;
   font-style: normal;

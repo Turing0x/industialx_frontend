@@ -1,0 +1,58 @@
+header {
+  min-height: 100vh;
+  background-color: #ccccff;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 50px;
+}
+
+div {
+  width: 45%;
+  height: 500px;
+  border-radius: 8px;
+  background-color: #faf2de;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div:hover button {
+  scale: 1.05;
+}
+
+.bagger {
+  font-size: 18px;
+  font-weight: 600;
+  color: #52526f;
+  letter-spacing: 0.2em;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: 800;
+  color: #00176a;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: #52526f;
+}
+
+button {
+  width: 210px;
+  height: 70px;
+  border-radius: 3px;
+  background-color: #ffb800;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: scale 0.3s ease;
+}
