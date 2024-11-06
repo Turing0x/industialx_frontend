@@ -1,0 +1,261 @@
+.main_list_container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 30px;
+  width: 70%;
+}
+
+.right {
+  align-items: center;
+  border-left: 3px solid #eaeff5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 0 60px;
+  width: 30%;
+}
+
+.each-prod {
+  border: 2px solid #f2f5fa;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px 0 0;
+}
+
+.main-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-info {
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+}
+
+.cant {
+  color: black;
+  padding: 5px 15px;
+  background-color: white;
+  border-radius: 3px;
+  margin: 0 5px;
+  font-size: 12px;
+  border: 1px solid #9e9fa4;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.less,
+.plus {
+  padding: 0 15px;
+  color: black;
+  font-size: 20px;
+  border-radius: 3px;
+  border: 1px solid #9e9fa4;
+  cursor: pointer;
+  user-select: none;
+  background-color: #f7f8fc;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f1f4f9;
+  height: 50px;
+  padding: 0 20px;
+}
+
+.remove,
+.details {
+  display: flex;
+  color: #4b5974;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.remove {
+  margin-right: 15px;
+}
+
+.remove:hover {
+  background-color: rgb(247, 141, 141);
+  color: black;
+}
+
+.details:hover {
+  background-color: #69b288;
+  color: black;
+}
+
+/* Tamaño del scroll */
+.list_box::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Estilos barra (thumb) de scroll */
+.list_box::-webkit-scrollbar-thumb {
+  background: #4b5974;
+  border-radius: 2px;
+}
+
+.list_box::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+.list_box::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos track de scroll */
+.list_box::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}
+
+.list_box::-webkit-scrollbar-track:hover,
+.list_box::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+}
+
+.pdf {
+  color: #54575e;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #edeef0;
+  padding: 5px 15px;
+  background-color: #f7f8fc;
+}
+
+.pdf:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+section input {
+  padding-left: 10px;
+  height: 35px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+section input::placeholder {
+  font-size: 16px;
+}
+
+section input:hover {
+  border: 1px solid #09f;
+}
+
+section textarea {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+section textarea::placeholder {
+  font-size: 16px;
+}
+
+section textarea:hover {
+  border: 1px solid #09f;
+}
+
+.input-data {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.finish {
+  align-items: center;
+  background-color: #438fff;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  margin-top: 30px;
+  width: 300px;
+}
+
+.finish:hover {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 1);
+}
+
+* {
+  user-select: none;
+}
+
+.empty-cart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 200px;
+  gap: 50px;
+}
+
+.empty-cart-content {
+  max-width: 55%;
+}
+
+.empty-cart-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.empty-cart-subtitle {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.empty-cart-text {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.empty-cart-explore-btn {
+  background-color: #438fff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.empty-cart-explore-btn:hover {
+  background-color: #2b67c0;
+}
+
+.empty-cart-illustration {
+  width: 45%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}

@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-shop-page',
+  selector: 'app-profile-page',
   standalone: true,
   imports: [
     CommonModule,
   ],
-  templateUrl: './shop-page.component.html',
-  styleUrl: './shop-page.component.css',
+  templateUrl: './profile-page.component.html',
+  styleUrl: './profile-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShopPageComponent { }
+export class ProfilePageComponent { }

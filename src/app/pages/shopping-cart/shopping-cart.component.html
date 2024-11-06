@@ -1,0 +1,249 @@
+<section class="main_list_container">
+  @if (product_list.length === 0) {
+  <ng-container *ngTemplateOutlet="empty"></ng-container>
+  }@else {
+  <section class="left">
+    <section
+      style="
+        display: flex;
+        justify-content: space-between;
+        color: #344654;
+        margin-bottom: 30px;
+      "
+    >
+      <p
+        style="
+          font-weight: bold;
+          font-size: 32px;
+          color: #344654;
+          margin-bottom: 10px;
+        "
+      >
+        Carrito de la Compra
+      </p>
+      <button
+        (click)="cleanCart()"
+        style="
+          padding: 5px 10px;
+          border-radius: 10px;
+          background-color: rgb(247, 141, 141);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+          color: white;
+          height: 40px;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+        "
+      >
+        <img
+          src="../../../../../../assets/icons/shopping-cart-off.svg"
+          alt="Limpiar Carrito"
+        />
+        Vaciar Carrito
+      </button>
+    </section>
+
+    <section
+      style="
+        display: flex;
+        justify-content: space-between;
+        color: #344654;
+        margin-bottom: 30px;
+      "
+    >
+      <p>{{ product_list.length }} productos seleccionados</p>
+      <p>Total: {{ totalAmount() | currency }}</p>
+    </section>
+
+    <section class="list_box" style="height: 70%; overflow-y: scroll">
+      @for (product of product_list; track $index) {
+      <span class="each-prod">
+        <div class="main-info">
+          <div class="left-info">
+            <div class="photo">
+              <img
+                src="{{ product.image }}"
+                alt="{{ product.name }}"
+                style="
+                  width: 100px;
+                  height: 100px;
+                  object-fit: cover;
+                  border-radius: 10px;
+                "
+              />
+            </div>
+
+            <div
+              class="info_prod"
+              style="
+                display: flex;
+                flex-direction: column;
+                width: 400px;
+                justify-content: center;
+              "
+            >
+              <span class="title" style="font-size: 18px; font-weight: bold">{{
+                product.name
+              }}</span>
+            </div>
+          </div>
+
+          <div
+            class="prices"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: end;
+              justify-content: space-between;
+            "
+          >
+            <span
+              style="
+                color: #373d4b;
+                font-weight: 600;
+                gap: 10px;
+                margin-top: 10px;
+                margin-right: 20px;
+              "
+              >{{ product.price | currency }} CUP
+            </span>
+            <span
+              style="
+                color: #373d4b;
+                font-weight: 600;
+                padding: 5px 10px;
+                border-radius: 10px 0 0 0;
+                background-color: #f1f4f9;
+              "
+              >Subtotal: {{ product.price * product.cantToBuy | currency }}
+            </span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <span class="remove" (click)="removeProductById(product._id)">
+            <img
+              src="../../../../../../assets/icons/trash.svg"
+              alt="Eliminar"
+            />
+            Quitar</span
+          >
+          <span
+            class="details"
+            [routerLink]="['/public/details']"
+            [queryParams]="{ id: product._id }"
+          >
+            <img
+              src="../../../../../../assets/icons/info-square-rounded.svg"
+              alt="Detalles"
+            />
+
+            Detalles</span
+          >
+
+          <div style="width: 100%"></div>
+
+          <div class="btns">
+            <span class="less" (click)="actionsOnCantToBy(product._id, -1)"
+              >-</span
+            >
+            <span class="cant">{{ product.cantToBuy }}</span>
+            <span class="plus" (click)="actionsOnCantToBy(product._id, +1)"
+              >+</span
+            >
+          </div>
+        </div>
+      </span>
+      }
+    </section>
+  </section>
+
+  <section class="right">
+    <p
+      style="
+        color: #373d4b;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      "
+    >
+      Detalles de la compra
+    </p>
+
+    <p style="text-align: center">
+      Quién vende se llama <strong>Raulito</strong>, con número de celular
+      <strong>+53 58884800</strong> y dirección en
+      <strong>Edificio 76 Apto 105</strong>
+    </p>
+
+    <section
+      style="
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+      "
+    >
+      <div class="input-data">
+        <label for="name">Cuál es su nombre?</label>
+        <input id="name" type="text" placeholder="Pedro" />
+      </div>
+      <div class="input-data">
+        <label for="address">Dirección de entrega</label>
+        <input id="address" type="text" placeholder="Calle 1, 12345" />
+      </div>
+      <div class="input-data">
+        <label for="tel">Teléfono de Contacto</label>
+        <input id="tel" type="text" placeholder="+53 50000000" />
+      </div>
+      <div class="input-data">
+        <label for="other">Información Adicional</label>
+        <textarea
+          name="additional-info"
+          placeholder="Notas sobre tu pedido, por ejemplo: alguna concideración especial para la entrega."
+          id="other"
+          cols="30"
+          rows="5"
+        ></textarea>
+      </div>
+    </section>
+
+    <span class="finish">Finalizar Compra</span>
+  </section>
+  }
+</section>
+
+<ng-template #empty>
+  <div class="empty-cart-container">
+    <div class="empty-cart-content">
+      <h1 class="empty-cart-title">¡Tu carrito está vacío!</h1>
+      <h2 class="empty-cart-subtitle">
+        Explora nuestra selección de delicias, ropa, electrodométicos y más, y
+        llena tu carrito con los productos que te encantan.
+      </h2>
+      <p class="empty-cart-text">
+        No te preocupes, estamos aquí para ayudarte a descubrir los productos de
+        tu preferencia. Nuestra selección está esperando ser descubierta por ti.
+        Ya sea que estés buscando un postre refrescante, un café espresso para
+        empezar el día, o un ron añejo para celebrar, tenemos algo para todos
+        los gustos.
+      </p>
+      <p class="empty-cart-text">
+        Explora nuestros productos, descubre las historias detrás de cada uno, y
+        permite que su magia se sume a tu carrito. ¡Haz clic en 'Ir de Compras'
+        y comienza tu aventura de descubrimiento hoy mismo!
+      </p>
+      <a href="/public/all-products" class="empty-cart-explore-btn">
+        Ir de Compras
+      </a>
+    </div>
+    <div class="empty-cart-illustration">
+      <img src="../../../../../../assets/images/online-shopping.svg" alt="" />
+    </div>
+  </div>
+  <div class="container-empty"></div>
+</ng-template>

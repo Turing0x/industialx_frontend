@@ -1,0 +1,62 @@
+:host {
+  --secondary: #6f7e8c;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-radius: 5px;
+  padding: 0 30px;
+  border: 1px solid #dddddd;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background-color: #fcfcfc;
+}
+
+input {
+  width: 100%;
+  margin-right: 20px;
+}
+
+input,
+select {
+  border: 1px solid #dddddd;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  resize: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #649bff;
+}
+
+.apply,
+.reset {
+  border-radius: 5px;
+  padding: 7px;
+  background-color: #579af8;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.apply:hover,
+.reset:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.reset {
+  background-color: rgb(247, 141, 141) !important;
+}

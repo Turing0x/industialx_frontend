@@ -1,4 +1,4 @@
-import { Product } from './../../interface/Product';
+import { Product } from '../../interface/product.interface';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AddBtnComponent } from '../add-btn/add-btn.component';

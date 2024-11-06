@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Product } from '../../interface/Product';
+import { Product } from '../../interface/product.interface';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { AddBtnComponent } from '../../shared/add-btn/add-btn.component';
 

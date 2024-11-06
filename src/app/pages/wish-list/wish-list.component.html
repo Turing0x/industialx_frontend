@@ -1,0 +1,175 @@
+<div class="top-container">
+  @if (product_list.length === 0) {
+  <ng-container *ngTemplateOutlet="emptyList"></ng-container>
+  }@else {
+  <span
+    style="
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      align-items: center;
+      margin-bottom: 30px;
+    "
+  >
+    <p style="color: #222222; font-size: 35px; font-weight: 600">
+      Mis Productos Favoritos
+    </p>
+  </span>
+  <div class="list">
+    @for (prod of product_list; track $index) {
+    <span class="each-prod">
+      <span
+        [routerLink]="['/public/details']"
+        [queryParams]="{ id: prod._id }"
+        style="display: flex; gap: 30px; cursor: pointer"
+      >
+        <div
+          class="photo"
+          style="
+            max-width: 100px;
+            max-height: 100px;
+            background-size: cover;
+            background-position: center;
+          "
+        >
+          <img
+            style="
+              width: 100%;
+              height: 100%;
+              border-radius: 10px;
+              object-fit: contain;
+            "
+            src="{{ prod.image }}"
+            alt="{{ prod.name }}"
+          />
+        </div>
+        <div class="info" style="display: flex; margin-top: 10px">
+          <div
+            class="left"
+            style="display: flex; flex-direction: column; gap: 5px"
+          >
+            <span style="color: #52529e; cursor: pointer">{{ prod.name }}</span>
+            <span style="color: #3e444a; font-weight: 600">{{
+              prod.price | currency
+            }}</span>
+          </div>
+        </div>
+      </span>
+
+      <div class="btns">
+        <span class="less" (click)="actionsOnCantToBy('cant_' + $index, -1)"
+          >-</span
+        >
+        <span id="cant_{{ $index }}" class="cant"
+          >{{ extractCantToByOfCart(prod._id) }}
+        </span>
+        <span class="plus" (click)="actionsOnCantToBy('cant_' + $index, +1)"
+          >+</span
+        >
+      </div>
+
+      <span
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        @if (isInCart(prod._id)) {
+
+        <svg
+          (click)="onClick($index, prod)"
+          xmlns="http://www.w3.org/2000/svg"
+          cursor="pointer"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#579af8"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart-minus"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+          <path d="M12.5 17h-6.5v-14h-2" />
+          <path d="M6 5l14 1l-1 7h-13" />
+          <path d="M16 19h6" />
+        </svg>
+        }@else {
+
+        <svg
+          (click)="onClick($index, prod)"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          cursor="pointer"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#a9a9a9"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart-plus"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+          <path d="M12.5 17h-6.5v-14h-2" />
+          <path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5" />
+          <path d="M16 19h6" />
+          <path d="M19 16v6" />
+        </svg>
+
+        }
+
+        <span
+          (click)="removeToFavorites(prod._id)"
+          style="display: flex; align-items: center; padding-left: 5px"
+        >
+          <span class="material-symbols-outlined remove"> delete </span>
+        </span>
+      </span>
+    </span>
+    }
+  </div>
+  }
+</div>
+
+<ng-template #emptyList>
+  <div
+    class="empty-list"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin: 50px;
+      height: 100%;
+    "
+  >
+    <img
+      style="width: 400px"
+      src="../../../../../assets/images/empty-list.png"
+      alt="Lista Vacía"
+    />
+    <span
+      style="
+        width: 500px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      "
+    >
+      <p style="text-align: center; font-size: 18px; margin-top: 20px">
+        Tu lista de productos favoritos está vacía.
+        <a
+          href="/public/all-products"
+          style="color: #007bff; text-decoration: none"
+          >Explora nuestra selección</a
+        >
+        y añade algunos de los productos disponibles a tu lista.
+      </p>
+    </span>
+  </div>
+</ng-template>
