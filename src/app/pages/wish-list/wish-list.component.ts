@@ -55,6 +55,6 @@ export class WishListComponent implements OnInit {
     const parsed = JSON.parse(cart) as Product[];
     const productInCart = parsed.find((prod) => prod._id === prod_id);
 
-    return productInCart ? productInCart.cantToBuy : 1;
+    return productInCart?.cantToBuy ?? 1;
   }
 }

@@ -19,7 +19,7 @@
           margin-bottom: 10px;
         "
       >
-        Carrito de la Compra
+        Shopping Cart
       </p>
       <button
         (click)="cleanCart()"
@@ -38,11 +38,8 @@
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
         "
       >
-        <img
-          src="../../../../../../assets/icons/shopping-cart-off.svg"
-          alt="Limpiar Carrito"
-        />
-        Vaciar Carrito
+        <img src="/icons/shopping-cart-off.svg" alt="Limpiar Carrito" />
+        Clear Cart
       </button>
     </section>
 
@@ -65,7 +62,7 @@
           <div class="left-info">
             <div class="photo">
               <img
-                src="{{ product.image }}"
+                src="{{ '/images/products/' + product.photo }}"
                 alt="{{ product.name }}"
                 style="
                   width: 100px;
@@ -118,30 +115,25 @@
                 border-radius: 10px 0 0 0;
                 background-color: #f1f4f9;
               "
-              >Subtotal: {{ product.price * product.cantToBuy | currency }}
+              >Subtotal:
+              {{ product.price * (product.cantToBuy ?? 0) | currency }}
             </span>
           </div>
         </div>
 
         <div class="actions">
           <span class="remove" (click)="removeProductById(product._id)">
-            <img
-              src="../../../../../../assets/icons/trash.svg"
-              alt="Eliminar"
-            />
-            Quitar</span
+            <img src="/icons/trash.svg" alt="Eliminar" />
+            Remove</span
           >
           <span
             class="details"
             [routerLink]="['/public/details']"
             [queryParams]="{ id: product._id }"
           >
-            <img
-              src="../../../../../../assets/icons/info-square-rounded.svg"
-              alt="Detalles"
-            />
+            <img src="/icons/info-square-rounded.svg" alt="Detalles" />
 
-            Detalles</span
+            Details</span
           >
 
           <div style="width: 100%"></div>
@@ -170,12 +162,12 @@
         margin-bottom: 10px;
       "
     >
-      Detalles de la compra
+      Purchase Details
     </p>
 
     <p style="text-align: center">
-      Quién vende se llama <strong>Raulito</strong>, con número de celular
-      <strong>+53 58884800</strong> y dirección en
+      Who sells is called <strong>Raulito</strong>, with phone number
+      <strong>+53 58884800</strong> and address in
       <strong>Edificio 76 Apto 105</strong>
     </p>
 
@@ -189,22 +181,22 @@
       "
     >
       <div class="input-data">
-        <label for="name">Cuál es su nombre?</label>
+        <label for="name">What is your name?</label>
         <input id="name" type="text" placeholder="Pedro" />
       </div>
       <div class="input-data">
-        <label for="address">Dirección de entrega</label>
+        <label for="address">Delivery Address</label>
         <input id="address" type="text" placeholder="Calle 1, 12345" />
       </div>
       <div class="input-data">
-        <label for="tel">Teléfono de Contacto</label>
+        <label for="tel">Contact Phone Number</label>
         <input id="tel" type="text" placeholder="+53 50000000" />
       </div>
       <div class="input-data">
-        <label for="other">Información Adicional</label>
+        <label for="other">Additional Information</label>
         <textarea
           name="additional-info"
-          placeholder="Notas sobre tu pedido, por ejemplo: alguna concideración especial para la entrega."
+          placeholder="Notes about your order, for example: special considerations for delivery."
           id="other"
           cols="30"
           rows="5"
@@ -212,7 +204,7 @@
       </div>
     </section>
 
-    <span class="finish">Finalizar Compra</span>
+    <span class="finish">Finalize Purchase</span>
   </section>
   }
 </section>
@@ -220,29 +212,28 @@
 <ng-template #empty>
   <div class="empty-cart-container">
     <div class="empty-cart-content">
-      <h1 class="empty-cart-title">¡Tu carrito está vacío!</h1>
+      <h1 class="empty-cart-title">¡Your cart is empty!</h1>
       <h2 class="empty-cart-subtitle">
-        Explora nuestra selección de delicias, ropa, electrodométicos y más, y
-        llena tu carrito con los productos que te encantan.
+        Explore our selection of delights, clothing, appliances, and more, and
+        fill your cart with the products you love.
       </h2>
       <p class="empty-cart-text">
-        No te preocupes, estamos aquí para ayudarte a descubrir los productos de
-        tu preferencia. Nuestra selección está esperando ser descubierta por ti.
-        Ya sea que estés buscando un postre refrescante, un café espresso para
-        empezar el día, o un ron añejo para celebrar, tenemos algo para todos
-        los gustos.
+        Don't worry, we're here to help you discover the products of your
+        preference. Our selection is waiting to be discovered by you. Whether
+        you're looking for a refreshing dessert, an espresso to start the day,
+        or an aged rum to celebrate, we have something for everyone's taste.
       </p>
       <p class="empty-cart-text">
-        Explora nuestros productos, descubre las historias detrás de cada uno, y
-        permite que su magia se sume a tu carrito. ¡Haz clic en 'Ir de Compras'
-        y comienza tu aventura de descubrimiento hoy mismo!
+        Explore our products, discover the stories behind each one, and let
+        their magic add to your cart. Click 'Go Shopping' and begin your
+        adventure of discovery today!
       </p>
       <a href="/public/all-products" class="empty-cart-explore-btn">
-        Ir de Compras
+        Go Shopping
       </a>
     </div>
     <div class="empty-cart-illustration">
-      <img src="../../../../../../assets/images/online-shopping.svg" alt="" />
+      <img src="/images/online-shopping.svg" alt="" />
     </div>
   </div>
   <div class="container-empty"></div>

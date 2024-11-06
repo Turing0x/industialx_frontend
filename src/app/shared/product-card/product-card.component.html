@@ -1,19 +1,39 @@
 <div class="product-card">
   <div class="product-image">
-    <img [src]="product.image" alt="Product Image" />
+    <img [src]="'/images/products/' + product.photo" alt="Product Image" />
+    @if(product.offer && product.offer > 0) {
     <div class="product-tag discount">-{{ product.offer }}%</div>
+    }
   </div>
 
   <div class="product-info">
     <h3 class="product-title">{{ product.name }}</h3>
     <p class="product-description">{{ product.description }}</p>
     <div class="product-price">
+      @if(product.offer && product.offer > 0) {
       <span class="current-price">{{
         product.price * (1 - product.offer / 100) | currency : "USD"
       }}</span>
-      <span class="original-price">{{ product.price | currency : "USD" }}</span>
+
+      }
+
+      <span
+        [ngClass]="{
+          'original-price': product.offer && product.offer > 0,
+          'current-price': !product.offer || product.offer === 0
+        }"
+        >{{ product.price | currency : "USD" }}</span
+      >
     </div>
   </div>
 
-  <button class="add-to-cart">Add to Cart</button>
+  <button
+    [ngClass]="{
+      'add-to-cart': !isInCart(product._id),
+      'remove-to-cart': isInCart(product._id)
+    }"
+    (click)="onClick(product)"
+  >
+    {{ !isInCart(product._id) ? "Add to Cart" : "Remove from Cart" }}
+  </button>
 </div>

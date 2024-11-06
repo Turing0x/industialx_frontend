@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../interface/product.interface';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+  private platform = inject(PLATFORM_ID);
+
   private shoppingCart: Product[] = [];
   private _products: BehaviorSubject<Product[]>;
 
@@ -15,15 +18,19 @@ export class CartService {
   }
 
   private loadCartFromLocalStorage(): void {
-    const cart = localStorage.getItem('shoppingCart');
-    if (cart) {
-      this.shoppingCart = JSON.parse(cart);
-      this._products.next(this.shoppingCart);
+    if (isPlatformBrowser(this.platform)) {
+      const cart = localStorage.getItem('shoppingCart');
+      if (cart) {
+        this.shoppingCart = JSON.parse(cart);
+        this._products.next(this.shoppingCart);
+      }
     }
   }
 
   private saveCartToLocalStorage(): void {
-    localStorage.setItem('shoppingCart', JSON.stringify(this.shoppingCart));
+    if (isPlatformBrowser(this.platform)) {
+      localStorage.setItem('shoppingCart', JSON.stringify(this.shoppingCart));
+    }
   }
 
   get allProducts() {
@@ -52,7 +59,7 @@ export class CartService {
     this.shoppingCart.find((product) => {
       if (product._id === id) {
         if (product.cantToBuy === 1 && cant === -1) return;
-        product.cantToBuy += cant;
+        product.cantToBuy = product.cantToBuy ? product.cantToBuy + cant : cant;
       }
     });
     this.saveCartToLocalStorage();
@@ -61,7 +68,7 @@ export class CartService {
 
   totalAmount(): string {
     return this.shoppingCart
-      .reduce((prev, curr) => prev + curr.price * curr.cantToBuy, 0)
+      .reduce((prev, curr) => prev + curr.price * (curr.cantToBuy ?? 0), 0)
       .toFixed(2);
   }
 

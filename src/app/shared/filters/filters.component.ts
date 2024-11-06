@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, inject, PLATFORM_ID } from '@angular/core';
 import { ProductManagerService } from '../../services/product-manager.service';
 import {
   FormBuilder,
@@ -18,6 +18,8 @@ import { filters_form_gruop } from '../../helpers/filters-form.formgroup';
   styleUrl: './filters.component.css',
 })
 export class FiltersComponent implements AfterViewInit {
+  private platform = inject(PLATFORM_ID);
+
   private fb = inject(FormBuilder);
   private productM = inject(ProductManagerService);
 
@@ -25,25 +27,27 @@ export class FiltersComponent implements AfterViewInit {
 
   dataForm: FormGroup = filters_form_gruop(this.fb);
   ngAfterViewInit(): void {
-    const name = document.getElementById('name') as HTMLInputElement;
-    this.filtersService.filters$.subscribe((filters) => {
-      if (filters.name) {
-        name.value = filters.name;
-      }
-    });
+    if (isPlatformBrowser(this.platform)) {
+      const name = document.getElementById('name') as HTMLInputElement;
+      this.filtersService.filters$.subscribe((filters) => {
+        if (filters.name) {
+          name.value = filters.name;
+        }
+      });
 
-    name.addEventListener('keypress', (event) => {
-      if (event.key === 'Enter') {
+      name.addEventListener('keypress', (event) => {
         this.productM.filterProducts(name.value);
-      }
-    });
+      });
+    }
   }
 
   applyFilters() {
-    const name = document.getElementById('name') as HTMLInputElement;
+    if (isPlatformBrowser(this.platform)) {
+      const name = document.getElementById('name') as HTMLInputElement;
 
-    if (!name) return;
-    this.productM.filterProducts(name.value);
+      if (!name) return;
+      this.productM.filterProducts(name.value);
+    }
   }
 
   resetFilters() {
@@ -51,7 +55,9 @@ export class FiltersComponent implements AfterViewInit {
   }
 
   orderList() {
-    const select = document.getElementById('order') as HTMLSelectElement;
-    if (select.value !== 'nothing') this.productM.sortProducts(select.value);
+    if (isPlatformBrowser(this.platform)) {
+      const select = document.getElementById('order') as HTMLSelectElement;
+      if (select.value !== 'nothing') this.productM.sortProducts(select.value);
+    }
   }
 }

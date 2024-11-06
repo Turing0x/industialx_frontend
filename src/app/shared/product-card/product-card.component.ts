@@ -1,7 +1,14 @@
 import { Product } from '../../interface/product.interface';
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+  PLATFORM_ID,
+} from '@angular/core';
 import { AddBtnComponent } from '../add-btn/add-btn.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'product-card',
@@ -13,4 +20,14 @@ import { AddBtnComponent } from '../add-btn/add-btn.component';
 })
 export class ProductCardComponent {
   @Input() product!: Product;
+
+  private cartS = inject(CartService);
+
+  onClick(product: Product) {
+    this.cartS.actionsOnCart(product, 1);
+  }
+
+  isInCart(id: string): boolean {
+    return this.cartS.isInCart(id);
+  }
 }

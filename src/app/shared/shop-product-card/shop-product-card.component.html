@@ -1,0 +1,51 @@
+<div class="product-card">
+  <div class="product-image">
+    <img [src]="'/images/products/' + product.photo" alt="Product Image" />
+    @if(product.offer && product.offer > 0) {
+    <div class="product-tag discount">-{{ product.offer }}%</div>
+    }
+  </div>
+
+  <div class="product-info">
+    <h3 class="product-title">{{ product.name }}</h3>
+    <p class="product-description">{{ product.description }}</p>
+    <div class="product-price">
+      @if(product.offer && product.offer > 0) {
+      <span class="current-price">{{
+        product.price * (1 - product.offer / 100) | currency : "USD"
+      }}</span>
+
+      }
+
+      <span
+        class="current-price"
+        [ngClass]="{ 'original-price': product.offer && product.offer > 0 }"
+        >{{ product.price | currency : "USD" }}</span
+      >
+    </div>
+  </div>
+
+  <span class="cant-btns">
+    <div class="btns">
+      <span class="less" (click)="actionsOnCantToBy('cant_' + index, -1)"
+        >-</span
+      >
+      <span id="cant_{{ index }}" class="cant"
+        >{{ extractCantToByOfCart(product._id) }}
+      </span>
+      <span class="plus" (click)="actionsOnCantToBy('cant_' + index, +1)"
+        >+</span
+      >
+    </div>
+  </span>
+
+  <button
+    (click)="onClick(product)"
+    [ngClass]="{
+      'add-to-cart': !isInCart(product._id),
+      'remove-to-cart': isInCart(product._id)
+    }"
+  >
+    {{ !isInCart(product._id) ? "Add to Cart" : "Remove from Cart" }}
+  </button>
+</div>

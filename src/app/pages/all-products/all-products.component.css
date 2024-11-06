@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(1, auto);
-  gap: 10px;
+  gap: 30px;
 }
 
 .each-prod {

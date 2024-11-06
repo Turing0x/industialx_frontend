@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../interface/product.interface';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WishListService {
+  private platform = inject(PLATFORM_ID);
+
   private wishlist: Product[] = [];
   private _products: BehaviorSubject<Product[]>;
 
@@ -15,15 +18,19 @@ export class WishListService {
   }
 
   private loadListFromLocalStorage(): void {
-    const List = localStorage.getItem('wishlist');
-    if (List) {
-      this.wishlist = JSON.parse(List);
-      this._products.next(this.wishlist);
+    if (isPlatformBrowser(this.platform)) {
+      const List = localStorage.getItem('wishlist');
+      if (List) {
+        this.wishlist = JSON.parse(List);
+        this._products.next(this.wishlist);
+      }
     }
   }
 
   private saveListToLocalStorage(): void {
-    localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
+    if (isPlatformBrowser(this.platform)) {
+      localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
+    }
   }
 
   get allProducts() {
