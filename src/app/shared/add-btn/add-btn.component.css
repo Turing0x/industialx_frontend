@@ -16,3 +16,21 @@ button {
   background-color: #ffb800;
   color: #fff;
 }
+
+/* Add responsive styles */
+@media screen and (max-width: 768px) {
+  button {
+    width: 160px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  button {
+    width: 140px;
+    height: 32px;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+}

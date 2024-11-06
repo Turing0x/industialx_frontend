@@ -22,3 +22,43 @@
   gap: 50px;
   width: 50%;
 }
+
+@media screen and (max-width: 1024px) {
+  .most-wanted {
+    padding: 0 50px 30px 50px;
+    height: auto;
+    min-height: 50dvh;
+  }
+
+  .header {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .most-wanted {
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .header {
+    width: 100%;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .most-wanted .title {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .most-wanted {
+    padding: 20px 15px;
+  }
+
+  .most-wanted .title {
+    font-size: 24px;
+  }
+}

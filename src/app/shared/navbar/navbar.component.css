@@ -19,6 +19,7 @@ nav .icons {
 
 .logo {
   height: 44px;
+  cursor: pointer;
 }
 
 .logo img {
@@ -39,7 +40,48 @@ a:hover {
   border-bottom-color: #ffb800;
 }
 
-.is-active {
+.is-active a {
   color: #ffb800 !important;
   border-bottom-color: #ffb800;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  nav .icons {
+    gap: 20px;
+  }
+
+  .logo {
+    height: 36px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  nav {
+    padding: 10px 15px;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  nav .icons {
+    gap: 15px;
+  }
+
+  a {
+    font-size: 14px;
+  }
 }

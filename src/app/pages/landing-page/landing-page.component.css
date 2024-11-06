@@ -4,3 +4,17 @@
   min-height: 100vh;
   background-color: #fff;
 }
+
+/* Tablet devices */
+@media screen and (max-width: 768px) {
+  .landing-page {
+    padding: 0.75rem;
+  }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+  .landing-page {
+    padding: 0.5rem;
+  }
+}

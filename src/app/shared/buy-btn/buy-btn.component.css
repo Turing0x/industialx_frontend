@@ -11,3 +11,21 @@ button {
   cursor: pointer;
   transition: scale 0.3s ease;
 }
+
+/* For tablets */
+@media screen and (max-width: 768px) {
+  button {
+    width: 180px;
+    height: 60px;
+    font-size: 16px;
+  }
+}
+
+/* For mobile phones */
+@media screen and (max-width: 480px) {
+  button {
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+  }
+}

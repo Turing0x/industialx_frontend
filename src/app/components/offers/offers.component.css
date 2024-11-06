@@ -38,6 +38,46 @@ ul {
   align-items: center;
 }
 
+/* Add responsive breakpoints */
+@media screen and (max-width: 1400px) {
+  ul {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  ul {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+
+  section {
+    padding: 0 50px 50px 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  ul {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+
+  section {
+    padding: 0 20px 30px 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  hr {
+    margin: 10px 0 30px 0;
+  }
+}
+
 li {
   display: flex;
   justify-content: center;

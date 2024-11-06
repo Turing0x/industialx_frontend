@@ -97,3 +97,67 @@ footer {
 .subscribe button:hover {
   background-color: #e6a600;
 }
+
+@media screen and (max-width: 1200px) {
+  footer {
+    padding: 60px 40px;
+  }
+
+  .links {
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  footer {
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+  }
+
+  .links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .links-group {
+    min-width: 200px;
+  }
+
+  .subscribe {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  footer {
+    padding: 40px 20px;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .links-group {
+    align-items: center;
+  }
+
+  .logo img {
+    width: 150px;
+  }
+
+  .subscribe input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .subscribe button {
+    width: 160px;
+    height: 50px;
+    font-size: 16px;
+  }
+}
