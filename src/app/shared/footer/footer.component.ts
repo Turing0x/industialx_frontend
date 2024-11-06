@@ -9,4 +9,45 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './footer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent {}
+export class FooterComponent {
+  public pageLinks = [
+    {
+      title: 'Links',
+      href: [
+        {
+          title: 'Home',
+          link: '/',
+        },
+        {
+          title: 'Shop',
+          link: '/shop',
+        },
+        {
+          title: 'About',
+          link: '/about',
+        },
+        {
+          title: 'Contact',
+          link: '/contact',
+        },
+      ],
+    },
+    {
+      title: 'Help',
+      href: [
+        {
+          title: 'Payments Options',
+          link: '/payments',
+        },
+        {
+          title: 'Returns & Exchanges',
+          link: '/returns',
+        },
+        {
+          title: 'Privacy Policy',
+          link: '/privacy',
+        },
+      ],
+    },
+  ];
+}

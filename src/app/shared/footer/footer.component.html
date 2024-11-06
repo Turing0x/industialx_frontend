@@ -1,1 +1,23 @@
-<p>footer works!</p>,
+<footer>
+  <div class="logo">
+    <img src="/images/footer-logo.png" alt="Industrial X Logo" />
+    <div class="address">
+      <p>400 University Drive Suite 200</p>
+      <p>Coral Springs, FL 33065</p>
+      <p>FL 33131 USA</p>
+    </div>
+  </div>
+
+  <div class="links">
+    <div class="links-group" *ngFor="let link of pageLinks">
+      <h3>{{ link.title }}</h3>
+      <a *ngFor="let href of link.href" [href]="href.link">{{ href.title }}</a>
+    </div>
+  </div>
+
+  <div class="subscribe">
+    <h3>Subscribe to our newsletter</h3>
+    <input type="email" placeholder="Enter your email" />
+    <button>Subscribe</button>
+  </div>
+</footer>

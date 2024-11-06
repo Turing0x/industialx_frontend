@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-buy-btn',
+  selector: 'buy-btn',
   standalone: true,
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './buy-btn.component.html',
   styleUrl: './buy-btn.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BuyBtnComponent { }
+export class BuyBtnComponent {}
