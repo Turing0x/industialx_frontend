@@ -1,0 +1,18 @@
+<section>
+  <p class="title">Products on Sale</p>
+  <p class="subtitle">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit
+  </p>
+
+  <hr />
+
+  <ul>
+    @for (product of products; track $index) {
+    <li>
+      <product-card [product]="product"></product-card>
+    </li>
+    }
+  </ul>
+
+  <add-btn></add-btn>
+</section>

@@ -1,0 +1,18 @@
+button {
+  width: 200px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #00176a;
+  color: #00176a;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: scale 0.3s ease;
+  margin-top: 20px;
+}
+
+.yellow {
+  background-color: #ffb800;
+  color: #fff;
+}

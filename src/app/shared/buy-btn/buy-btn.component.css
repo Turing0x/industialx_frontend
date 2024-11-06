@@ -1,0 +1,13 @@
+button {
+  width: 210px;
+  height: 70px;
+  border-radius: 3px;
+  background-color: #ffb800;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: scale 0.3s ease;
+}
