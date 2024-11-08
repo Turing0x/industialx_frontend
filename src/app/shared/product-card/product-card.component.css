@@ -44,6 +44,8 @@
   color: #666;
   font-size: 14px;
   margin: 8px 0;
+  width: 80%;
+  text-overflow: ellipsis;
 }
 
 .product-price {

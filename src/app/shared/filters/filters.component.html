@@ -4,19 +4,19 @@
       id="name"
       formControlName="name"
       type="text"
-      placeholder="Búsqueda por nombre"
+      placeholder="Search by name"
     />
     <span>
       <select id="order" (change)="orderList()">
-        <option value="nothing">Ordernar por</option>
+        <option value="nothing">Order By</option>
         <option value="asc">Menor Precio Primero</option>
         <option value="desc">Mayor Precio Primero</option>
       </select>
     </span>
 
     <span>
-      <span class="apply" (click)="applyFilters()">Aplicar</span>
-      <span class="reset" (click)="resetFilters()">Limpiar</span>
+      <span class="apply" (click)="applyFilters()">Apply</span>
+      <span class="reset" (click)="resetFilters()">Clear</span>
     </span>
   </form>
 </div>
