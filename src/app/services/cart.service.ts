@@ -68,7 +68,15 @@ export class CartService {
 
   totalAmount(): string {
     return this.shoppingCart
-      .reduce((prev, curr) => prev + curr.price * (curr.cantToBuy ?? 0), 0)
+      .reduce(
+        (prev, curr) =>
+          prev +
+          (curr.offer && curr.offer > 0
+            ? curr.price * (1 - curr.offer / 100)
+            : curr.price) *
+            (curr.cantToBuy ?? 0),
+        0
+      )
       .toFixed(2);
   }
 

@@ -259,3 +259,23 @@ section textarea:hover {
   background-size: cover;
   background-position: center;
 }
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+  padding-right: 10px;
+}
+
+.current-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.original-price {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 14px;
+}

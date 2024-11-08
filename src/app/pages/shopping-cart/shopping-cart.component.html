@@ -51,8 +51,8 @@
         margin-bottom: 30px;
       "
     >
-      <p>{{ product_list.length }} productos seleccionados</p>
-      <p>Total: {{ totalAmount() | currency }}</p>
+      <p>{{ product_list.length }} selected products</p>
+      <p>Total: {{ totalAmount() | currency : "USD" }}</p>
     </section>
 
     <section class="list_box" style="height: 70%; overflow-y: scroll">
@@ -97,16 +97,22 @@
               justify-content: space-between;
             "
           >
-            <span
-              style="
-                color: #373d4b;
-                font-weight: 600;
-                gap: 10px;
-                margin-top: 10px;
-                margin-right: 20px;
-              "
-              >{{ product.price | currency }} CUP
-            </span>
+            <div class="product-price">
+              @if(product.offer && product.offer > 0) {
+              <span class="current-price">{{
+                product.price * (1 - product.offer / 100) | currency : "USD"
+              }}</span>
+
+              }
+
+              <span
+                [ngClass]="{
+                  'original-price': product.offer && product.offer > 0,
+                  'current-price': !product.offer || product.offer === 0
+                }"
+                >{{ product.price | currency : "USD" }}</span
+              >
+            </div>
             <span
               style="
                 color: #373d4b;
@@ -115,23 +121,30 @@
                 border-radius: 10px 0 0 0;
                 background-color: #f1f4f9;
               "
-              >Subtotal:
-              {{ product.price * (product.cantToBuy ?? 0) | currency }}
+              >Subtotal: @if (product.offer > 0){
+              {{
+                product.price *
+                  (1 - product.offer / 100) *
+                  (product.cantToBuy ?? 0) | currency : "USD"
+              }}
+              }@else {
+              {{ product.price * (product.cantToBuy ?? 0) | currency : "USD" }}
+              }
             </span>
           </div>
         </div>
 
         <div class="actions">
           <span class="remove" (click)="removeProductById(product._id)">
-            <img src="/icons/trash.svg" alt="Eliminar" />
+            <img src="/icons/trash.svg" alt="Delete" />
             Remove</span
           >
           <span
             class="details"
-            [routerLink]="['/public/details']"
+            [routerLink]="['/shop']"
             [queryParams]="{ id: product._id }"
           >
-            <img src="/icons/info-square-rounded.svg" alt="Detalles" />
+            <img src="/icons/info-square-rounded.svg" alt="Details" />
 
             Details</span
           >
@@ -228,9 +241,7 @@
         their magic add to your cart. Click 'Go Shopping' and begin your
         adventure of discovery today!
       </p>
-      <a href="/public/all-products" class="empty-cart-explore-btn">
-        Go Shopping
-      </a>
+      <a href="/shop" class="empty-cart-explore-btn"> Go Shopping </a>
     </div>
     <div class="empty-cart-illustration">
       <img src="/images/online-shopping.svg" alt="" />
