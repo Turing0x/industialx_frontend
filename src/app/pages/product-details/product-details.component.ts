@@ -22,8 +22,8 @@ export class ProductDetailsComponent implements OnInit {
   public product!: Product | undefined;
 
   ngOnInit(): void {
-    this.activateRoute.queryParams.subscribe((params) => {
-      this.productService.getProductById(params['id']).subscribe((prod) => {
+    this.activateRoute.params.subscribe(({ id }) => {
+      this.productService.getProductById(id).subscribe((prod) => {
         const aux = { ...prod, cantToBuy: 1 };
         this.product = aux;
       });

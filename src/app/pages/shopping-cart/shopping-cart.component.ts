@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interface/product.interface';
 import { CartService } from '../../services/cart.service';
 import { RouterModule } from '@angular/router';
+import { EmptyCartComponent } from '../../components/empty-cart/empty-cart.component';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, EmptyCartComponent],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css',
 })

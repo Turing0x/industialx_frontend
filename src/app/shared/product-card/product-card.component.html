@@ -1,12 +1,18 @@
 <div class="product-card">
   <div class="product-image">
-    <img [src]="'/images/products/' + product.photo" alt="Product Image" />
-    @if(product.offer && product.offer > 0) {
-    <div class="product-tag discount">-{{ product.offer }}%</div>
-    }
+    <img [src]="'/images/products/' + product.photo" [alt]="product.name" />
+    <div class="top-btns">
+      <div class="favorite" (click)="addToFavorites()">
+        <img src="/icons/favorites.svg" alt="Add To Favorites" />
+      </div>
+
+      @if(product.offer && product.offer > 0) {
+      <div class="product-tag discount">-{{ product.offer }}%</div>
+      }
+    </div>
   </div>
 
-  <div class="product-info">
+  <div class="product-info" [routerLink]="['/shop', product._id]">
     <h3 class="product-title">{{ product.name }}</h3>
     <p class="product-description">{{ product.description }}</p>
     <div class="product-price">

@@ -36,16 +36,16 @@ export class ShopProductCardComponent {
     }
   }
 
-  addToFavorites(product: Product) {
-    this.wishlistS.actionsOnList(product);
+  addToFavorites() {
+    this.wishlistS.actionsOnList(this.product);
   }
 
-  isInCart(id: string): boolean {
-    return this.cartS.isInCart(id);
+  isInCart(): boolean {
+    return this.cartS.isInCart(this.product._id);
   }
 
-  isInWishList(id: string): boolean {
-    return this.wishlistS.isInList(id);
+  isInWishList(): boolean {
+    return this.wishlistS.isInList(this.product._id);
   }
 
   actionsOnCantToBy(span_id: string, cant: number) {

@@ -73,6 +73,7 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+          gap: 10px;
         "
       >
         @if (isInCart(prod._id)) {
@@ -125,7 +126,12 @@
 
         <span
           (click)="removeToFavorites(prod._id)"
-          style="display: flex; align-items: center; padding-left: 5px"
+          style="
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            cursor: pointer;
+          "
         >
           <img src="/icons/trash.svg" alt="Delete" />
         </span>

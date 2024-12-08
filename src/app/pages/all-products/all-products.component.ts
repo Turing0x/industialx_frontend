@@ -1,11 +1,17 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  PLATFORM_ID,
+  inject,
+} from '@angular/core';
 import { ProductManagerService } from '../../services/product-manager.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { FiltersService } from '../../services/filters.service';
+import { RouterModule } from '@angular/router';
 import { Product } from '../../interface/product.interface';
 import { FiltersComponent } from '../../shared/filters/filters.component';
 import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-product-card.component';
+import { SubtitleComponent } from '../../components/subtitle/subtitle.component';
 
 @Component({
   selector: 'app-all-products',
@@ -15,19 +21,21 @@ import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-pr
     RouterModule,
     CommonModule,
     ShopProductCardComponent,
+    SubtitleComponent,
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',
 })
 export class AllProductsComponent implements OnInit {
   private platform = inject(PLATFORM_ID);
-  private activateR = inject(ActivatedRoute);
+  private cd = inject(ChangeDetectorRef);
 
   private productM = inject(ProductManagerService);
-  private filterService = inject(FiltersService);
 
-  public product_list: Product[] = [];
+  public product_list!: [Product[]];
   public query_search: string | null = null;
+
+  public currentPage: number = 0;
 
   ngOnInit(): void {
     this.updateProductList();
@@ -35,8 +43,27 @@ export class AllProductsComponent implements OnInit {
 
   updateProductList() {
     this.productM.allProducts.subscribe((list) => {
-      this.product_list = list;
+      const paginatedList: [Product[]] = [[]];
+      for (let i = 0; i < list.length; i += 20) {
+        paginatedList.push(list.slice(i, i + 20));
+      }
+
+      paginatedList.shift();
+      this.product_list = paginatedList;
     });
+  }
+
+  changeCurrentPage(page: number) {
+    this.currentPage = page;
+  }
+
+  getTotalLenght(): number {
+    let total = 0;
+    this.product_list.forEach((list) => {
+      total += list.length;
+    });
+
+    return total;
   }
 
   actionsOnCantToBy(span_id: string, cant: number) {

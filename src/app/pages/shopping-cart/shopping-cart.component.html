@@ -1,6 +1,6 @@
 <section class="main_list_container">
   @if (product_list.length === 0) {
-  <ng-container *ngTemplateOutlet="empty"></ng-container>
+  <empty-cart></empty-cart>
   }@else {
   <section class="left">
     <section
@@ -221,31 +221,3 @@
   </section>
   }
 </section>
-
-<ng-template #empty>
-  <div class="empty-cart-container">
-    <div class="empty-cart-content">
-      <h1 class="empty-cart-title">¡Your cart is empty!</h1>
-      <h2 class="empty-cart-subtitle">
-        Explore our selection of delights, clothing, appliances, and more, and
-        fill your cart with the products you love.
-      </h2>
-      <p class="empty-cart-text">
-        Don't worry, we're here to help you discover the products of your
-        preference. Our selection is waiting to be discovered by you. Whether
-        you're looking for a refreshing dessert, an espresso to start the day,
-        or an aged rum to celebrate, we have something for everyone's taste.
-      </p>
-      <p class="empty-cart-text">
-        Explore our products, discover the stories behind each one, and let
-        their magic add to your cart. Click 'Go Shopping' and begin your
-        adventure of discovery today!
-      </p>
-      <a href="/shop" class="empty-cart-explore-btn"> Go Shopping </a>
-    </div>
-    <div class="empty-cart-illustration">
-      <img src="/images/online-shopping.svg" alt="" />
-    </div>
-  </div>
-  <div class="container-empty"></div>
-</ng-template>

@@ -1,9 +1,15 @@
 <div class="product-card">
   <div class="product-image">
     <img [src]="'/images/products/' + product.photo" alt="Product Image" />
-    @if(product.offer && product.offer > 0) {
-    <div class="product-tag discount">-{{ product.offer }}%</div>
-    }
+    <div class="top-btns">
+      <div class="favorite" (click)="addToFavorites()">
+        <img src="/icons/favorites.svg" alt="Add To Favorites" />
+      </div>
+
+      @if(product.offer && product.offer > 0) {
+      <div class="product-tag discount">-{{ product.offer }}%</div>
+      }
+    </div>
   </div>
 
   <div class="product-info">
@@ -42,10 +48,10 @@
   <button
     (click)="onClick(product)"
     [ngClass]="{
-      'add-to-cart': !isInCart(product._id),
-      'remove-to-cart': isInCart(product._id)
+      'add-to-cart': !isInCart(),
+      'remove-to-cart': isInCart()
     }"
   >
-    {{ !isInCart(product._id) ? "Add to Cart" : "Remove from Cart" }}
+    {{ !isInCart() ? "Add to Cart" : "Remove from Cart" }}
   </button>
 </div>

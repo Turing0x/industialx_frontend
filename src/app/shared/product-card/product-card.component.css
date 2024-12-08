@@ -19,6 +19,26 @@
   object-fit: cover;
 }
 
+.top-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite {
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  margin-left: 5px;
+  margin-top: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
 .product-tag.discount {
   position: absolute;
   top: 0;
@@ -31,6 +51,7 @@
 
 .product-info {
   padding: 16px;
+  cursor: pointer;
 }
 
 .product-title {
@@ -99,6 +120,10 @@
 .product-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-card:hover .favorite {
+  background-color: #ffb800;
 }
 
 .product-card:hover .add-to-cart,

@@ -85,3 +85,41 @@
 .btn-empty-list:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
+@media screen and (max-width: 768px) {
+  .material-symbols-outlined.shop,
+  .material-symbols-outlined.remove {
+    font-size: 24px;
+  }
+
+  .less,
+  .plus {
+    padding: 0 10px;
+    font-size: 16px;
+  }
+
+  .btn-empty-list {
+    width: 160px;
+    font-size: 14px;
+    padding: 6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .material-symbols-outlined.shop,
+  .material-symbols-outlined.remove {
+    font-size: 20px;
+  }
+
+  .less,
+  .plus {
+    padding: 0 8px;
+    font-size: 14px;
+  }
+
+  .btn-empty-list {
+    width: 140px;
+    font-size: 12px;
+    padding: 5px;
+  }
+}

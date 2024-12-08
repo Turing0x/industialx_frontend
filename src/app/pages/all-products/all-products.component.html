@@ -10,21 +10,36 @@
     <p style="color: #222222; font-size: 35px; font-weight: 600">
       All Products
     </p>
-    <p>Showing 1 - 20 de {{ product_list.length }} results</p>
+    <subtitle
+      text="Showing 1 - {{ product_list[currentPage].length }} de {{
+        getTotalLenght()
+      }} results"
+    />
   </span>
 
   <product-filters></product-filters>
 
-  @if (product_list.length === 0) {
+  @if (product_list[0].length === 0) {
   <ng-container *ngTemplateOutlet="emptyList"></ng-container>
   }@else {
   <div class="list">
-    @for (product of product_list; track $index) {
+    @for (product of product_list[currentPage]; track $index) {
     <shop-product-card [product]="product" [index]="$index"></shop-product-card>
-
     }
   </div>
   }
+
+  <ul class="paginate">
+    @for (page of product_list; track $index) {
+    <li
+      (click)="changeCurrentPage($index)"
+      [ngClass]="{ 'active-page': currentPage === $index }"
+      class="page"
+    >
+      {{ $index + 1 }}
+    </li>
+    }
+  </ul>
 </div>
 
 <ng-template #emptyList>
