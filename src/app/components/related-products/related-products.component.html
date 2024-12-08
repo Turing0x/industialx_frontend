@@ -1,0 +1,13 @@
+<section>
+  <p class="title">Related Products</p>
+
+  <ul>
+    @for (product of products; track $index) {
+    <li>
+      <product-card [product]="product"></product-card>
+    </li>
+    }
+  </ul>
+
+  <add-btn></add-btn>
+</section>

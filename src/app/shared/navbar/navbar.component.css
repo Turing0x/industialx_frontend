@@ -1,7 +1,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   padding: 20px 80px;
   border-bottom: 15px solid #ffb800;
 }

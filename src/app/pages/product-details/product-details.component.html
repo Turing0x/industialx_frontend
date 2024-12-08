@@ -1,60 +1,100 @@
-<div class="product-info">
-  <div class="left">
-    <img
-      [src]="'/images/products/' + product?.photo"
-      [alt]="product?.name"
-      class="photo"
-    />
+<div class="product-detail">
+  <div class="path-container">
+    <span class="go-to" routerLink="/">Home</span>
+    <span><img src="/icons/right-arrow.svg" alt="Right Arrow" /></span>
+    <span class="go-to" routerLink="/shop">Shop</span>
+    <span><img src="/icons/right-arrow.svg" alt="Right Arrow" /></span>
+    <span>|</span>
+
+    <span class="path-prod-name">{{ product?.name }}</span>
   </div>
 
-  <div class="right">
-    <h2>{{ product?.name }}</h2>
-    <p>Rs. {{ product?.price }}.00</p>
-
-    <div class="rating">
-      <span *ngFor="let star of [1, 2, 3, 4, 5]">⭐</span>
-      <!-- <span>({{product?.reviews?.length || 0}} customer reviews)</span> -->
+  <section class="product-info">
+    <div class="left">
+      <img
+        [src]="'/images/products/' + product?.photo"
+        [alt]="product?.name"
+        class="photo"
+      />
     </div>
 
-    <p class="description">{{ product?.description }}</p>
+    <div class="right">
+      <div class="top-right">
+        <h2>{{ product?.name }}</h2>
+        <p class="price">Rs. {{ product?.price }}</p>
+      </div>
 
-    <div class="colors">
-      <span>Colors:</span>
-      <div class="color-options">
-        <button class="color-btn" style="background-color: black"></button>
-        <button class="color-btn" style="background-color: gray"></button>
-        <button class="color-btn" style="background-color: #c19a6b"></button>
+      <div class="rating">
+        <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]">⭐</span>
+        <span>5 Customer Review</span>
+      </div>
+
+      <p class="description">{{ product?.description }}</p>
+
+      <div class="colors">
+        <span>Colors:</span>
+        <div class="color-options">
+          <button class="color-btn" style="background-color: black"></button>
+          <button class="color-btn" style="background-color: gray"></button>
+          <button class="color-btn" style="background-color: #c19a6b"></button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <span class="btn">
+          <span class="less" (click)="actionsOnCantToBy(-1)">-</span>
+          <span class="cant" id="cant">1</span>
+          <span class="plus" (click)="actionsOnCantToBy(1)">+</span>
+        </span>
+
+        <button class="btn" (click)="onClick()" [disabled]="isInCart()">
+          {{ isInCart() ? "Remove from Cart" : "Add to Cart" }}
+        </button>
+        <button class="btn" (click)="addToFavorites()">
+          {{ isInWishList() ? "Remove from Wishlist" : "Add to Wishlist" }}
+        </button>
+      </div>
+
+      <div class="meta">
+        <p class="meta-item">SKU: {{ product?._id }}</p>
+        <p class="meta-item">Category: {{ product?.cantToBuy }}</p>
+        <p class="meta-item">Tags: Furniture, Wooden, Sofa</p>
+        <div class="social">
+          Share:
+          <a href="#"><img src="/icons/facebook.svg" alt="Facebook" /></a>
+          <a href="#"><img src="/icons/whatsapp.svg" alt="Whatsapp" /></a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="quantity">
-      <span>Quantity:</span>
-      <div class="btns">
-        <span class="less" (click)="actionsOnCantToBy(-1)">-</span>
-        <span class="cant" id="cant">1</span>
-        <span class="plus" (click)="actionsOnCantToBy(1)">+</span>
+  <section class="more-info">
+    <div class="tabs">
+      <button class="tab-btn active">Description</button>
+      <button class="tab-btn">Additional Information</button>
+      <button class="tab-btn">Reviews (0)</button>
+    </div>
+
+    <div class="tab-content">
+      <div class="description-content">
+        <p>
+          Introducing the new, improved build of only 47.2B, the Effortx
+          cushable pillow comes together below the unremovable loss and source
+          of material, change the criteria and make the show of the build.
+        </p>
+        <p>
+          Weighing in at over 50 units, the Effortx is a lightweight choice of
+          package whilst engineering, letting the low volume of the burden
+          determine its use. With the Effortx in control, let us all together
+          make a well-structured quality which focuses in clean mappings and
+          source control. The Effortx is made to match comfort and performance,
+          making it the ideal choice for those who want to excel in material
+          awareness while energizing on lightweight build using in-memory
+          technology.
+        </p>
       </div>
     </div>
+  </section>
 
-    <div class="actions">
-      <button class="buy" (click)="onClick()" [disabled]="isInCart()">
-        {{ isInCart() ? "In Cart" : "Add to Cart" }}
-      </button>
-      <button class="fav" (click)="addToFavorites()">
-        {{ isInWishList() ? "❤️" : "🤍" }}
-      </button>
-    </div>
-
-    <div class="meta">
-      <p>SKU: {{ product?._id }}</p>
-      <p>Category: {{ product?.cantToBuy }}</p>
-      <p>Tags: Furniture, Wooden, Sofa</p>
-      <div class="social">
-        Share:
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
-      </div>
-    </div>
-  </div>
+  <app-related-products category="prueba"></app-related-products>
 </div>

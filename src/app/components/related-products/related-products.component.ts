@@ -1,31 +1,27 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   inject,
+  Input,
   OnInit,
 } from '@angular/core';
 import { Product } from '../../interface/product.interface';
+import { ProductService } from '../../services/product.service';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { AddBtnComponent } from '../../shared/add-btn/add-btn.component';
-import { ProductService } from '../../services/product.service';
-import { SubtitleComponent } from '../subtitle/subtitle.component';
 
 @Component({
-  selector: 'landing-offers',
+  selector: 'app-related-products',
   standalone: true,
-  imports: [
-    CommonModule,
-    ProductCardComponent,
-    AddBtnComponent,
-    SubtitleComponent,
-  ],
-  templateUrl: './offers.component.html',
-  styleUrl: './offers.component.css',
+  imports: [ProductCardComponent, AddBtnComponent],
+  templateUrl: './related-products.component.html',
+  styleUrl: './related-products.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OffersComponent implements OnInit {
+export class RelatedProductsComponent implements OnInit {
+  @Input({ required: true }) category!: string;
+
   private cd = inject(ChangeDetectorRef);
 
   private productService = inject(ProductService);
@@ -33,7 +29,9 @@ export class OffersComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((products) => {
-      this.products = products.filter((product) => product.offer > 0);
+      this.products = products
+        .filter((product) => product.offer > 0)
+        .slice(0, 4);
       this.cd.detectChanges();
     });
   }

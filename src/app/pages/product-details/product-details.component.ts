@@ -5,11 +5,12 @@ import { WishListService } from '../../services/favorite.service';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../interface/product.interface';
+import { RelatedProductsComponent } from '../../components/related-products/related-products.component';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, RelatedProductsComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })

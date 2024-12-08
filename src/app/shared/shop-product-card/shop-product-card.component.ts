@@ -9,11 +9,12 @@ import {
 import { Product } from '../../interface/product.interface';
 import { CartService } from '../../services/cart.service';
 import { WishListService } from '../../services/favorite.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'shop-product-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './shop-product-card.component.html',
   styleUrl: './shop-product-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

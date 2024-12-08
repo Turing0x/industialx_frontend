@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="product-info">
+  <div class="product-info" [routerLink]="['/shop', product._id]">
     <h3 class="product-title">{{ product.name }}</h3>
     <p class="product-description">{{ product.description }}</p>
     <div class="product-price">
