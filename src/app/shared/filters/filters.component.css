@@ -2,18 +2,17 @@
   --secondary: #6f7e8c;
 }
 
+.container {
+  padding: 30px 80px;
+  margin-bottom: 30px;
+  background-color: #ffebb8;
+}
+
 form {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
-  border-radius: 5px;
-  padding: 0 30px;
-  border: 1px solid #dddddd;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  background-color: #fcfcfc;
 }
 
 input {

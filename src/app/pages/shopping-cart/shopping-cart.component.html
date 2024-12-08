@@ -1,223 +1,221 @@
-<section class="main_list_container">
-  @if (product_list.length === 0) {
-  <empty-cart></empty-cart>
-  }@else {
-  <section class="left">
-    <section
-      style="
-        display: flex;
-        justify-content: space-between;
-        color: #344654;
-        margin-bottom: 30px;
-      "
-    >
-      <p
+<section class="main-container">
+  <div class="path-container">
+    <span class="go-to" routerLink="/">Home</span>
+    <span><img src="/icons/right-arrow.svg" alt="Right Arrow" /></span>
+    <span class="go-to" routerLink="/shop">Shop</span>
+    <span><img src="/icons/right-arrow.svg" alt="Right Arrow" /></span>
+    <span>|</span>
+
+    <span class="path-prod-name">Shopping Cart</span>
+  </div>
+
+  <section class="main_list_container">
+    @if (product_list.length === 0) {
+    <empty-cart></empty-cart>
+    }@else {
+    <section class="left">
+      <section
         style="
-          font-weight: bold;
-          font-size: 32px;
-          color: #344654;
-          margin-bottom: 10px;
-        "
-      >
-        Shopping Cart
-      </p>
-      <button
-        (click)="cleanCart()"
-        style="
-          padding: 5px 10px;
-          border-radius: 10px;
-          background-color: rgb(247, 141, 141);
           display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 16px;
-          border: none;
-          cursor: pointer;
-          color: white;
-          height: 40px;
-          box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+          justify-content: space-between;
+          color: #344654;
+          margin-bottom: 30px;
         "
       >
-        <img src="/icons/shopping-cart-off.svg" alt="Limpiar Carrito" />
-        Clear Cart
-      </button>
-    </section>
+        <p class="totals">
+          {{ product_list.length }} selected products -
+          {{ totalAmount() | currency : "USD" }}
+        </p>
+        <button
+          (click)="cleanCart()"
+          style="
+            padding: 5px 10px;
+            border-radius: 10px;
+            background-color: rgb(247, 141, 141);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            height: 40px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+          "
+        >
+          <img src="/icons/shopping-cart-off.svg" alt="Limpiar Carrito" />
+          Clear Cart
+        </button>
+      </section>
 
-    <section
-      style="
-        display: flex;
-        justify-content: space-between;
-        color: #344654;
-        margin-bottom: 30px;
-      "
-    >
-      <p>{{ product_list.length }} selected products</p>
-      <p>Total: {{ totalAmount() | currency : "USD" }}</p>
-    </section>
+      <section class="list_box" style="height: 100%; overflow-y: scroll">
+        @for (product of product_list; track $index) {
+        <span class="each-prod">
+          <div class="main-info">
+            <div class="left-info">
+              <div class="photo">
+                <img
+                  src="{{ '/images/products/' + product.photo }}"
+                  alt="{{ product.name }}"
+                  style="
+                    width: 100px;
+                    height: 100px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                  "
+                />
+              </div>
 
-    <section class="list_box" style="height: 70%; overflow-y: scroll">
-      @for (product of product_list; track $index) {
-      <span class="each-prod">
-        <div class="main-info">
-          <div class="left-info">
-            <div class="photo">
-              <img
-                src="{{ '/images/products/' + product.photo }}"
-                alt="{{ product.name }}"
+              <div
+                class="info_prod"
                 style="
-                  width: 100px;
-                  height: 100px;
-                  object-fit: cover;
-                  border-radius: 10px;
+                  display: flex;
+                  flex-direction: column;
+                  width: 400px;
+                  justify-content: center;
                 "
-              />
+              >
+                <span
+                  class="title"
+                  style="font-size: 18px; font-weight: bold"
+                  >{{ product.name }}</span
+                >
+              </div>
             </div>
 
             <div
-              class="info_prod"
+              class="prices"
               style="
                 display: flex;
                 flex-direction: column;
-                width: 400px;
-                justify-content: center;
+                align-items: end;
+                justify-content: space-between;
               "
             >
-              <span class="title" style="font-size: 18px; font-weight: bold">{{
-                product.name
-              }}</span>
+              <div class="product-price">
+                @if(product.offer && product.offer > 0) {
+                <span class="current-price">{{
+                  product.price * (1 - product.offer / 100) | currency : "USD"
+                }}</span>
+
+                }
+
+                <span
+                  [ngClass]="{
+                    'original-price': product.offer && product.offer > 0,
+                    'current-price': !product.offer || product.offer === 0
+                  }"
+                  >{{ product.price | currency : "USD" }}</span
+                >
+              </div>
+              <span
+                style="
+                  color: #373d4b;
+                  font-weight: 600;
+                  padding: 5px 10px;
+                  border-radius: 10px 0 0 0;
+                  background-color: #f1f4f9;
+                "
+                >Subtotal: @if (product.offer > 0){
+                {{
+                  product.price *
+                    (1 - product.offer / 100) *
+                    (product.cantToBuy ?? 0) | currency : "USD"
+                }}
+                }@else {
+                {{
+                  product.price * (product.cantToBuy ?? 0) | currency : "USD"
+                }}
+                }
+              </span>
             </div>
           </div>
 
-          <div
-            class="prices"
-            style="
-              display: flex;
-              flex-direction: column;
-              align-items: end;
-              justify-content: space-between;
-            "
-          >
-            <div class="product-price">
-              @if(product.offer && product.offer > 0) {
-              <span class="current-price">{{
-                product.price * (1 - product.offer / 100) | currency : "USD"
-              }}</span>
+          <div class="actions">
+            <span class="remove" (click)="removeProductById(product._id)">
+              <img src="/icons/trash.svg" alt="Delete" />
+              Remove</span
+            >
+            <span
+              class="details"
+              [routerLink]="['/shop']"
+              [queryParams]="{ id: product._id }"
+            >
+              <img src="/icons/info-square-rounded.svg" alt="Details" />
 
-              }
+              Details</span
+            >
 
-              <span
-                [ngClass]="{
-                  'original-price': product.offer && product.offer > 0,
-                  'current-price': !product.offer || product.offer === 0
-                }"
-                >{{ product.price | currency : "USD" }}</span
+            <div style="width: 100%"></div>
+
+            <div class="btns">
+              <span class="less" (click)="actionsOnCantToBy(product._id, -1)"
+                >-</span
+              >
+              <span class="cant">{{ product.cantToBuy }}</span>
+              <span class="plus" (click)="actionsOnCantToBy(product._id, +1)"
+                >+</span
               >
             </div>
-            <span
-              style="
-                color: #373d4b;
-                font-weight: 600;
-                padding: 5px 10px;
-                border-radius: 10px 0 0 0;
-                background-color: #f1f4f9;
-              "
-              >Subtotal: @if (product.offer > 0){
-              {{
-                product.price *
-                  (1 - product.offer / 100) *
-                  (product.cantToBuy ?? 0) | currency : "USD"
-              }}
-              }@else {
-              {{ product.price * (product.cantToBuy ?? 0) | currency : "USD" }}
-              }
-            </span>
           </div>
-        </div>
-
-        <div class="actions">
-          <span class="remove" (click)="removeProductById(product._id)">
-            <img src="/icons/trash.svg" alt="Delete" />
-            Remove</span
-          >
-          <span
-            class="details"
-            [routerLink]="['/shop']"
-            [queryParams]="{ id: product._id }"
-          >
-            <img src="/icons/info-square-rounded.svg" alt="Details" />
-
-            Details</span
-          >
-
-          <div style="width: 100%"></div>
-
-          <div class="btns">
-            <span class="less" (click)="actionsOnCantToBy(product._id, -1)"
-              >-</span
-            >
-            <span class="cant">{{ product.cantToBuy }}</span>
-            <span class="plus" (click)="actionsOnCantToBy(product._id, +1)"
-              >+</span
-            >
-          </div>
-        </div>
-      </span>
-      }
-    </section>
-  </section>
-
-  <section class="right">
-    <p
-      style="
-        color: #373d4b;
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 10px;
-      "
-    >
-      Purchase Details
-    </p>
-
-    <p style="text-align: center">
-      Who sells is called <strong>Raulito</strong>, with phone number
-      <strong>+53 58884800</strong> and address in
-      <strong>Edificio 76 Apto 105</strong>
-    </p>
-
-    <section
-      style="
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 30px;
-      "
-    >
-      <div class="input-data">
-        <label for="name">What is your name?</label>
-        <input id="name" type="text" placeholder="Pedro" />
-      </div>
-      <div class="input-data">
-        <label for="address">Delivery Address</label>
-        <input id="address" type="text" placeholder="Calle 1, 12345" />
-      </div>
-      <div class="input-data">
-        <label for="tel">Contact Phone Number</label>
-        <input id="tel" type="text" placeholder="+53 50000000" />
-      </div>
-      <div class="input-data">
-        <label for="other">Additional Information</label>
-        <textarea
-          name="additional-info"
-          placeholder="Notes about your order, for example: special considerations for delivery."
-          id="other"
-          cols="30"
-          rows="5"
-        ></textarea>
-      </div>
+        </span>
+        }
+      </section>
     </section>
 
-    <span class="finish">Finalize Purchase</span>
+    <section class="right">
+      <p
+        style="
+          color: #373d4b;
+          font-size: 20px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        "
+      >
+        Purchase Details
+      </p>
+
+      <p style="text-align: center">
+        Who sells is called <strong>Raulito</strong>, with phone number
+        <strong>+53 58884800</strong> and address in
+        <strong>Edificio 76 Apto 105</strong>
+      </p>
+
+      <section
+        style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          margin-top: 30px;
+        "
+      >
+        <div class="input-data">
+          <label for="name">What is your name?</label>
+          <input id="name" type="text" placeholder="Pedro" />
+        </div>
+        <div class="input-data">
+          <label for="address">Delivery Address</label>
+          <input id="address" type="text" placeholder="Calle 1, 12345" />
+        </div>
+        <div class="input-data">
+          <label for="tel">Contact Phone Number</label>
+          <input id="tel" type="text" placeholder="+53 50000000" />
+        </div>
+        <div class="input-data">
+          <label for="other">Additional Information</label>
+          <textarea
+            name="additional-info"
+            placeholder="Notes about your order, for example: special considerations for delivery."
+            id="other"
+            cols="30"
+            rows="5"
+          ></textarea>
+        </div>
+      </section>
+
+      <span class="finish">Finalize Purchase</span>
+    </section>
+    }
   </section>
-  }
 </section>

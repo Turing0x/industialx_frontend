@@ -5,11 +5,34 @@
   height: 100vh;
 }
 
+.path-container {
+  width: 100%;
+  color: white;
+  padding: 40px 80px;
+  font-size: 20px;
+  display: flex;
+  background: linear-gradient(to right, #00176a, #34348e);
+  gap: 22px;
+  align-items: center;
+}
+
+.path-prod-name {
+  color: #ffb800;
+}
+
+.go-to {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.go-to:hover {
+  color: #ffb800;
+}
+
 .left {
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
   padding: 30px;
   width: 70%;
 }
@@ -23,6 +46,11 @@
   justify-content: center;
   padding: 0 60px;
   width: 30%;
+}
+
+.totals {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .each-prod {

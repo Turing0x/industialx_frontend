@@ -12,7 +12,7 @@
   padding: 40px 80px;
   font-size: 20px;
   display: flex;
-  background-color: #00176a;
+  background: linear-gradient(to right, #00176a, #34348e);
   gap: 22px;
   align-items: center;
 }

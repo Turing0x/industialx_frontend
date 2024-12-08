@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { Product } from '../../interface/product.interface';
 import { FiltersComponent } from '../../shared/filters/filters.component';
 import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-product-card.component';
-import { SubtitleComponent } from '../../components/subtitle/subtitle.component';
 
 @Component({
   selector: 'app-all-products',
@@ -21,21 +20,42 @@ import { SubtitleComponent } from '../../components/subtitle/subtitle.component'
     RouterModule,
     CommonModule,
     ShopProductCardComponent,
-    SubtitleComponent,
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',
 })
 export class AllProductsComponent implements OnInit {
   private platform = inject(PLATFORM_ID);
-  private cd = inject(ChangeDetectorRef);
 
   private productM = inject(ProductManagerService);
 
-  public product_list!: [Product[]];
+  public product_list: [Product[]] = [[]];
   public query_search: string | null = null;
 
   public currentPage: number = 0;
+
+  public info_texts: { icon: string; title: string; subtitle: string }[] = [
+    {
+      icon: 'trophy.svg',
+      title: 'High Quality',
+      subtitle: 'crafted from top materials',
+    },
+    {
+      icon: 'done.svg',
+      title: 'Warranty Protection',
+      subtitle: 'Over 2 years',
+    },
+    {
+      icon: 'delivery.svg',
+      title: 'Free Shipping',
+      subtitle: 'Order over 150$',
+    },
+    {
+      icon: 'support.svg',
+      title: '24/7 Support',
+      subtitle: 'Dedicated support',
+    },
+  ];
 
   ngOnInit(): void {
     this.updateProductList();

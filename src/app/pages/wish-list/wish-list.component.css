@@ -5,6 +5,30 @@
   padding: 20px 150px;
 }
 
+.path-container {
+  width: 100%;
+  color: white;
+  padding: 40px 80px;
+  font-size: 20px;
+  display: flex;
+  background: linear-gradient(to right, #00176a, #34348e);
+  gap: 22px;
+  align-items: center;
+}
+
+.path-prod-name {
+  color: #ffb800;
+}
+
+.go-to {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.go-to:hover {
+  color: #ffb800;
+}
+
 .each-prod {
   border: 1px solid #dddddd;
   margin-top: 10px;
