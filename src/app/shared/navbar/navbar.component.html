@@ -30,8 +30,17 @@
 
       <div class="cart-preview">
         <h2>Shopping Cart</h2>
-        <div class="cart-items">
-          @for (prod of prods_in_cart; track $index) {
+        <div
+          class="cart-items"
+          [ngClass]="{ 'cart-items-empty': prods_in_cart.length === 0 }"
+        >
+          @if (prods_in_cart.length === 0) {
+          <div class="empty-cart">
+            <img src="/icons/empty-cart.svg" alt="Empty Cart" />
+            <p>Your cart is empty</p>
+            <button class="shop-now-btn" routerLink="/shop">Shop Now</button>
+          </div>
+          } @else { @for (prod of prods_in_cart; track $index) {
           <div class="cart-item">
             <img [src]="'/images/products/' + prod.photo" [alt]="prod.name" />
             <div class="item-details">
@@ -68,8 +77,9 @@
               <img src="/icons/trash.svg" alt="Delete" />
             </span>
           </div>
-          }
+          } }
         </div>
+        @if (prods_in_cart.length > 0) {
         <div class="cart-footer">
           <div class="subtotal">
             <span class="first">
@@ -84,6 +94,7 @@
             <button class="compare-btn">Comparison</button>
           </div>
         </div>
+        }
       </div>
     </a>
   </div>
