@@ -44,7 +44,8 @@ export class WishListService {
   actionsOnList(product: Product) {
     const some = this.wishlist.some((prod) => prod._id === product._id);
     if (!some) {
-      this.wishlist.push(product);
+      const newProd: Product = { ...product, cantToBuy: 1 };
+      this.wishlist.push(newProd);
     } else {
       this.wishlist = this.wishlist.filter((prod) => prod._id !== product._id);
     }
