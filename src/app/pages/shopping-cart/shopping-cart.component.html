@@ -17,35 +17,25 @@
       <section
         style="
           display: flex;
+          align-items: center;
           justify-content: space-between;
-          color: #344654;
           margin-bottom: 30px;
         "
       >
-        <p class="totals">
-          {{ product_list.length }} selected products -
-          {{ totalAmount() | currency : "USD" }}
+        <p class="subtotal">
+          Subtotal <span>{{ totalAmount() | currency : "USD" }}</span>
         </p>
-        <button
-          (click)="cleanCart()"
-          style="
-            padding: 5px 10px;
-            border-radius: 10px;
-            background-color: rgb(247, 141, 141);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            color: white;
-            height: 40px;
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-          "
-        >
-          <img src="/icons/shopping-cart-off.svg" alt="Limpiar Carrito" />
-          Clear Cart
-        </button>
+
+        <div class="others-btns">
+          <button class="checkout">
+            <img src="/icons/credit-card.svg" alt="Credit Card" />
+            <p>Proceed to Checkout ({{ product_list.length }} products)</p>
+          </button>
+          <button class="share">
+            <img src="/icons/share.svg" alt="Share" />
+            <p>Share Cart</p>
+          </button>
+        </div>
       </section>
 
       <section class="list_box" style="height: 100%; overflow-y: scroll">
@@ -162,60 +152,27 @@
         }
       </section>
     </section>
-
-    <section class="right">
-      <p
-        style="
-          color: #373d4b;
-          font-size: 20px;
-          font-weight: bold;
-          margin-bottom: 10px;
-        "
-      >
-        Purchase Details
-      </p>
-
-      <p style="text-align: center">
-        Who sells is called <strong>Raulito</strong>, with phone number
-        <strong>+53 58884800</strong> and address in
-        <strong>Edificio 76 Apto 105</strong>
-      </p>
-
-      <section
-        style="
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          margin-top: 30px;
-        "
-      >
-        <div class="input-data">
-          <label for="name">What is your name?</label>
-          <input id="name" type="text" placeholder="Pedro" />
-        </div>
-        <div class="input-data">
-          <label for="address">Delivery Address</label>
-          <input id="address" type="text" placeholder="Calle 1, 12345" />
-        </div>
-        <div class="input-data">
-          <label for="tel">Contact Phone Number</label>
-          <input id="tel" type="text" placeholder="+53 50000000" />
-        </div>
-        <div class="input-data">
-          <label for="other">Additional Information</label>
-          <textarea
-            name="additional-info"
-            placeholder="Notes about your order, for example: special considerations for delivery."
-            id="other"
-            cols="30"
-            rows="5"
-          ></textarea>
-        </div>
-      </section>
-
-      <span class="finish">Finalize Purchase</span>
-    </section>
     }
+
+    <section
+      class="right"
+      [ngClass]="{ 'empty-cart': product_list.length === 0 }"
+    >
+      <span class="wishlist-title">
+        <p class="title">Your Wishlist</p>
+        <p class="subtitle">
+          Bring your favorite products directly to your cart
+        </p>
+      </span>
+
+      <div class="wishlist-container">
+        @for (product of wishlist_list; track $index) {
+        <litter-product-card
+          [product]="product"
+          [index]="$index"
+        ></litter-product-card>
+        }
+      </div>
+    </section>
   </section>
 </section>

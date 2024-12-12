@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { ToastService } from '../../services/toast-service.service';
 
 @Component({
@@ -9,7 +15,7 @@ import { ToastService } from '../../services/toast-service.service';
   templateUrl: './toast-notification.component.html',
   styleUrl: './toast-notification.component.css',
 })
-export class ToastNotificationComponent implements OnInit {
+export class ToastNotificationComponent implements OnInit, OnDestroy {
   isVisible = false;
   message = '';
   type: 'success' | 'error' | 'info' | 'warning' = 'info';
@@ -19,9 +25,13 @@ export class ToastNotificationComponent implements OnInit {
   private timeout: any;
   private toastService = inject(ToastService);
 
+  private subscription: any;
+
   ngOnInit(): void {
-    this.toastService.toast$.subscribe(({ message, type, duration }) => {
-      this.showToast(message, type, duration);
+    this.subscription = this.toastService.toast$.subscribe((toast) => {
+      if (toast) {
+        this.showToast(toast.message, toast.type, toast.duration);
+      }
     });
   }
 
@@ -43,5 +53,14 @@ export class ToastNotificationComponent implements OnInit {
   close(): void {
     this.isVisible = false;
     this.cd.detectChanges();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
   }
 }

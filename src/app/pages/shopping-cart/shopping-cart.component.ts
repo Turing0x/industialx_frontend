@@ -1,25 +1,38 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Product } from '../../interface/product.interface';
 import { CartService } from '../../services/cart.service';
 import { RouterModule } from '@angular/router';
 import { EmptyCartComponent } from '../../components/empty-cart/empty-cart.component';
+import { WishListService } from '../../services/favorite.service';
+import { LitterProductCardComponent } from '../../shared/litter-product-card/litter-product-card.component';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [RouterModule, CommonModule, EmptyCartComponent],
+  imports: [
+    RouterModule,
+    CommonModule,
+    EmptyCartComponent,
+    LitterProductCardComponent,
+  ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css',
 })
 export class ShoppingCartComponent implements OnInit {
-  public product_list: Product[] = [];
+  private cartService = inject(CartService);
+  private wishlistService = inject(WishListService);
 
-  constructor(private cartService: CartService) {}
+  public product_list: Product[] = [];
+  public wishlist_list: Product[] = [];
 
   ngOnInit(): void {
     this.cartService.allProducts.subscribe(
       (list) => (this.product_list = list)
+    );
+
+    this.wishlistService.allProducts.subscribe(
+      (list) => (this.wishlist_list = list)
     );
   }
 

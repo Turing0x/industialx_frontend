@@ -47,7 +47,7 @@
           <span class="plus" (click)="actionsOnCantToBy(1)">+</span>
         </span>
 
-        <button class="btn" (click)="onClick()" [disabled]="isInCart()">
+        <button class="btn" (click)="onClick()">
           {{ isInCart() ? "Remove from Cart" : "Add to Cart" }}
         </button>
         <button class="btn" (click)="addToFavorites()">

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
-  private toastSubject = new Subject<{
+  private toastSubject = new BehaviorSubject<{
     message: string;
     type: 'success' | 'error' | 'info' | 'warning';
     duration?: number;
-  }>();
+  } | null>(null);
+
   toast$ = this.toastSubject.asObservable();
 
   showToast(

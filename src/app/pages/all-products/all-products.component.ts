@@ -15,7 +15,6 @@ import { ToastNotificationComponent } from '../../shared/toast-notification/toas
     RouterModule,
     CommonModule,
     ShopProductCardComponent,
-    ToastNotificationComponent,
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',

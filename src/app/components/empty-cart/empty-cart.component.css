@@ -1,9 +1,9 @@
 .empty-cart-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 200px;
   gap: 50px;
+  padding: 0 200px;
 }
 
 .empty-cart-content {

@@ -1,12 +1,19 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'empty-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './empty-cart.component.html',
   styleUrl: './empty-cart.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    style: 'width: 75%;',
+  },
 })
 export class EmptyCartComponent {}
