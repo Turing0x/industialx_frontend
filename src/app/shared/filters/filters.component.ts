@@ -17,7 +17,7 @@ import { filters_form_gruop } from '../../helpers/filters-form.formgroup';
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.css',
 })
-export class FiltersComponent implements AfterViewInit {
+export class FiltersComponent {
   private platform = inject(PLATFORM_ID);
 
   private fb = inject(FormBuilder);
@@ -26,21 +26,6 @@ export class FiltersComponent implements AfterViewInit {
   private filtersService = inject(FiltersService);
 
   dataForm: FormGroup = filters_form_gruop(this.fb);
-  ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platform)) {
-      const name = document.getElementById('name') as HTMLInputElement;
-      this.filtersService.filters$.subscribe((filters) => {
-        if (filters.name) {
-          name.value = filters.name;
-        }
-      });
-
-      name.addEventListener('keypress', (event) => {
-        this.productM.filterProducts(name.value);
-      });
-    }
-  }
-
   applyFilters() {
     if (isPlatformBrowser(this.platform)) {
       const name = document.getElementById('name') as HTMLInputElement;

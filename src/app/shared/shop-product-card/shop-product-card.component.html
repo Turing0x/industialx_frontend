@@ -2,18 +2,16 @@
   <div class="product-image">
     <img [src]="'/images/products/' + product.photo" alt="Product Image" />
     <div class="top-btns">
-      <div class="favorite" (click)="addToFavorites()">
-        <img src="/icons/favorites.svg" alt="Add To Favorites" />
-      </div>
-
       @if(product.offer && product.offer > 0) {
       <div class="product-tag discount">-{{ product.offer }}%</div>
       }
     </div>
   </div>
 
-  <div class="product-info" [routerLink]="['/shop', product._id]">
-    <h3 class="product-title">{{ product.name }}</h3>
+  <div class="product-info">
+    <h3 class="product-title" [routerLink]="['/shop', product._id]">
+      {{ product.name }}
+    </h3>
     <p class="product-description">{{ product.description }}</p>
     <div class="product-price">
       @if(product.offer && product.offer > 0) {
@@ -29,29 +27,73 @@
         >{{ product.price | currency : "USD" }}</span
       >
     </div>
-  </div>
 
-  <span class="cant-btns">
-    <div class="btns">
-      <span class="less" (click)="actionsOnCantToBy('cant_' + index, -1)"
-        >-</span
-      >
-      <span id="cant_{{ index }}" class="cant"
-        >{{ extractCantToByOfCart(product._id) }}
+    <span class="cant-btns">
+      <div class="btns">
+        <span class="less" (click)="actionsOnCantToBy('cant_' + index, -1)"
+          >-</span
+        >
+        <span id="cant_{{ index }}" class="cant"
+          >{{ extractCantToByOfCart(product._id) }}
+        </span>
+        <span class="plus" (click)="actionsOnCantToBy('cant_' + index, +1)"
+          >+</span
+        >
+      </div>
+
+      <span class="shop-fav">
+        <button
+          (click)="addToFavorites()"
+          [ngClass]="{ 'is-fav': isInWishList() }"
+        >
+          @if(isInWishList()) {
+          <img src="/icons/favorite-fill.svg" alt="Favorites Fill" />
+          }@else {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-heart"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+            />
+          </svg>
+          }
+        </button>
+
+        <button (click)="onClick()" [ngClass]="{ 'is-in-cart': isInCart() }">
+          @if(isInCart()) {
+          <img src="/icons/cart-fill.svg" alt="Cart Fill" />
+          }@else {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M17 17h-11v-14h-2" />
+            <path d="M6 5l14 1l-1 7h-13" />
+          </svg>
+          }
+        </button>
       </span>
-      <span class="plus" (click)="actionsOnCantToBy('cant_' + index, +1)"
-        >+</span
-      >
-    </div>
-  </span>
-
-  <button
-    (click)="onClick(product)"
-    [ngClass]="{
-      'add-to-cart': !isInCart(),
-      'remove-to-cart': isInCart()
-    }"
-  >
-    {{ !isInCart() ? "Add to Cart" : "Remove from Cart" }}
-  </button>
+    </span>
+  </div>
 </div>

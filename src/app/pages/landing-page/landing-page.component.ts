@@ -4,6 +4,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { OurRangeComponent } from '../../components/our-range/our-range.component';
 import { OffersComponent } from '../../components/offers/offers.component';
 import { MostWantedComponent } from '../../components/most-wanted/most-wanted.component';
+import { ToastNotificationComponent } from '../../shared/toast-notification/toast-notification.component';
 
 @Component({
   selector: 'landing-page',
@@ -14,6 +15,7 @@ import { MostWantedComponent } from '../../components/most-wanted/most-wanted.co
     OurRangeComponent,
     OffersComponent,
     MostWantedComponent,
+    ToastNotificationComponent,
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css',

@@ -1,22 +1,20 @@
-<div class="container">
-  <form [formGroup]="dataForm">
-    <input
-      id="name"
-      formControlName="name"
-      type="text"
-      placeholder="Search by name"
-    />
-    <span>
-      <select id="order" (change)="orderList()">
-        <option value="nothing">Order By</option>
-        <option value="asc">Menor Precio Primero</option>
-        <option value="desc">Mayor Precio Primero</option>
-      </select>
-    </span>
+<section>
+  <div class="left">
+    <img src="/icons/filters.svg" alt="Filter" />
 
-    <span>
-      <span class="apply" (click)="applyFilters()">Apply</span>
-      <span class="reset" (click)="resetFilters()">Clear</span>
-    </span>
-  </form>
-</div>
+    <p>Filters</p>
+
+    <img src="/icons/grid.svg" alt="Grid" />
+    <img src="/icons/horizontal.svg" alt="Horizontal List" />
+
+    <span>Showing 1-12 of 100 products</span>
+  </div>
+  <div class="right">
+    <span>Show</span>
+    <input type="number" value="16" />
+    <span>Short by</span>
+    <select>
+      <option selected>Default</option>
+    </select>
+  </div>
+</section>

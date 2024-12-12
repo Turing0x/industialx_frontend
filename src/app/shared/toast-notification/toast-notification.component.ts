@@ -1,16 +1,47 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ToastService } from '../../services/toast-service.service';
 
 @Component({
-  selector: 'app-toast-notification',
+  selector: 'toast-notification',
   standalone: true,
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './toast-notification.component.html',
   styleUrl: './toast-notification.component.css',
 })
-  
-export class ToastNotificationComponent {
-  @Input() text!: string;
+export class ToastNotificationComponent implements OnInit {
+  isVisible = false;
+  message = '';
+  type: 'success' | 'error' | 'info' | 'warning' = 'info';
+
+  private cd = inject(ChangeDetectorRef);
+
+  private timeout: any;
+  private toastService = inject(ToastService);
+
+  ngOnInit(): void {
+    this.toastService.toast$.subscribe(({ message, type, duration }) => {
+      this.showToast(message, type, duration);
+    });
+  }
+
+  showToast(
+    message: string,
+    type: 'success' | 'error' | 'info' | 'warning' = 'info',
+    duration = 3000
+  ): void {
+    this.message = message;
+    this.type = type;
+    this.isVisible = true;
+
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.close();
+    }, duration);
+  }
+
+  close(): void {
+    this.isVisible = false;
+    this.cd.detectChanges();
+  }
 }

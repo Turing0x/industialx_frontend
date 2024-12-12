@@ -8,13 +8,13 @@ import {
 } from '@angular/core';
 import { Product } from '../../interface/product.interface';
 import { ProductService } from '../../services/product.service';
-import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { AddBtnComponent } from '../../shared/add-btn/add-btn.component';
+import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-product-card.component';
 
 @Component({
   selector: 'app-related-products',
   standalone: true,
-  imports: [ProductCardComponent, AddBtnComponent],
+  imports: [ShopProductCardComponent, AddBtnComponent],
   templateUrl: './related-products.component.html',
   styleUrl: './related-products.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

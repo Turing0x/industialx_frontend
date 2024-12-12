@@ -1,16 +1,11 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import {
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  PLATFORM_ID,
-  inject,
-} from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { ProductManagerService } from '../../services/product-manager.service';
 import { RouterModule } from '@angular/router';
 import { Product } from '../../interface/product.interface';
 import { FiltersComponent } from '../../shared/filters/filters.component';
 import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-product-card.component';
+import { ToastNotificationComponent } from '../../shared/toast-notification/toast-notification.component';
 
 @Component({
   selector: 'app-all-products',
@@ -20,6 +15,7 @@ import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-pr
     RouterModule,
     CommonModule,
     ShopProductCardComponent,
+    ToastNotificationComponent,
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',

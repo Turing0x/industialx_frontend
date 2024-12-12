@@ -7,19 +7,19 @@ import {
   OnInit,
 } from '@angular/core';
 import { Product } from '../../interface/product.interface';
-import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { AddBtnComponent } from '../../shared/add-btn/add-btn.component';
 import { ProductService } from '../../services/product.service';
 import { SubtitleComponent } from '../subtitle/subtitle.component';
+import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-product-card.component';
 
 @Component({
   selector: 'landing-offers',
   standalone: true,
   imports: [
     CommonModule,
-    ProductCardComponent,
     AddBtnComponent,
     SubtitleComponent,
+    ShopProductCardComponent,
   ],
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.css',

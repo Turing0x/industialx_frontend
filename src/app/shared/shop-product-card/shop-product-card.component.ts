@@ -4,12 +4,14 @@ import {
   Component,
   inject,
   Input,
+  OnDestroy,
   PLATFORM_ID,
 } from '@angular/core';
 import { Product } from '../../interface/product.interface';
 import { CartService } from '../../services/cart.service';
 import { WishListService } from '../../services/favorite.service';
 import { RouterLink } from '@angular/router';
+import { ToastService } from '../../services/toast-service.service';
 
 @Component({
   selector: 'shop-product-card',
@@ -19,7 +21,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './shop-product-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShopProductCardComponent {
+export class ShopProductCardComponent implements OnDestroy {
   @Input() index!: number;
   @Input() product!: Product;
 
@@ -27,18 +29,46 @@ export class ShopProductCardComponent {
 
   private wishlistS = inject(WishListService);
   private cartS = inject(CartService);
+  private toastService = inject(ToastService);
 
-  onClick(product: Product) {
+  onClick() {
     if (isPlatformBrowser(this.platform)) {
       const cant = document.getElementById(
         `cant_${this.index}`
       ) as HTMLSpanElement;
-      this.cartS.actionsOnCart(product, Number.parseInt(cant.textContent!));
+      this.cartS.actionsOnCart(
+        this.product,
+        Number.parseInt(cant.textContent!)
+      );
+
+      if (this.isInCart()) {
+        this.toastService.showToast(
+          `El producto ha sido agregado al carrito`,
+          'success'
+        );
+      } else {
+        this.toastService.showToast(
+          `El producto ha sido eliminado del carrito`,
+          'error'
+        );
+      }
     }
   }
 
   addToFavorites() {
     this.wishlistS.actionsOnList(this.product);
+    console.log(this.isInWishList());
+    if (this.isInWishList()) {
+      this.toastService.showToast(
+        `El producto ha sido agregado a favoritos`,
+        'success'
+      );
+    } else {
+      this.toastService.showToast(
+        `El producto ha sido eliminado de favoritos`,
+        'error'
+      );
+    }
   }
 
   isInCart(): boolean {
@@ -71,5 +101,9 @@ export class ShopProductCardComponent {
       return productInCart?.cantToBuy ?? 1;
     }
     return 1;
+  }
+
+  ngOnDestroy(): void {
+    this.toastService.destroy();
   }
 }
