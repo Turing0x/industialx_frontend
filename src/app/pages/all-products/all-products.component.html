@@ -15,7 +15,7 @@
   <product-filters></product-filters>
 
   <div class="top-container">
-    @if (product_list[0].length === 0) {
+    @if (product_list[0] && product_list[0].length === 0) {
     <ng-container *ngTemplateOutlet="emptyList"></ng-container>
     }@else {
     <div class="list">

@@ -28,7 +28,7 @@ export class ToastNotificationComponent implements OnInit {
   showToast(
     message: string,
     type: 'success' | 'error' | 'info' | 'warning' = 'info',
-    duration = 3000
+    duration = 2000
   ): void {
     this.message = message;
     this.type = type;

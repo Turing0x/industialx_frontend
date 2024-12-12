@@ -57,7 +57,6 @@ export class ShopProductCardComponent implements OnDestroy {
 
   addToFavorites() {
     this.wishlistS.actionsOnList(this.product);
-    console.log(this.isInWishList());
     if (this.isInWishList()) {
       this.toastService.showToast(
         `El producto ha sido agregado a favoritos`,

@@ -15,7 +15,7 @@ export class ToastService {
   showToast(
     message: string,
     type: 'success' | 'error' | 'info' | 'warning',
-    duration = 3000
+    duration = 2000
   ): void {
     this.toastSubject.next({ message, type, duration });
   }

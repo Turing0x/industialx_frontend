@@ -4,6 +4,7 @@ import {
   Component,
   inject,
   OnInit,
+  PLATFORM_ID,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Product } from '../../interface/product.interface';
@@ -19,6 +20,9 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnInit {
+  private cd = inject(ChangeDetectorRef);
+  private platform = inject(PLATFORM_ID);
+
   private cartService = inject(CartService);
 
   public prods_in_cart: Product[] = [];
@@ -26,6 +30,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.allProducts.subscribe((prods) => {
       this.prods_in_cart = prods;
+      this.cd.detectChanges();
     });
   }
 
@@ -38,21 +43,26 @@ export class NavbarComponent implements OnInit {
   }
 
   actionsOnCantToBy(span_id: string, cant: number) {
-    const span = document.getElementById(span_id) as HTMLSpanElement;
-    if (!span.textContent) return;
+    if (isPlatformBrowser(this.platform)) {
+      const span = document.getElementById(span_id) as HTMLSpanElement;
+      if (!span.textContent) return;
 
-    const value = Number.parseInt(span.textContent);
-    if (value + cant === 0) return;
-    span.innerHTML = `${value + cant}`;
+      const value = Number.parseInt(span.textContent);
+      if (value + cant === 0) return;
+      span.innerHTML = `${value + cant}`;
+    }
   }
 
   extractCantToByOfCart(prod_id: string): number {
-    const cart = localStorage.getItem('shoppingCart');
-    if (!cart) return 1;
+    if (isPlatformBrowser(this.platform)) {
+      const cart = localStorage.getItem('shoppingCart');
+      if (!cart) return 1;
 
-    const parsed = JSON.parse(cart) as Product[];
-    const productInCart = parsed.find((prod) => prod._id === prod_id);
+      const parsed = JSON.parse(cart) as Product[];
+      const productInCart = parsed.find((prod) => prod._id === prod_id);
 
-    return productInCart?.cantToBuy ?? 1;
+      return productInCart?.cantToBuy ?? 1;
+    }
+    return 1;
   }
 }

@@ -199,12 +199,6 @@
   }
 
   .cant-btns {
-    flex-direction: column;
     gap: 10px;
-  }
-
-  .shop-fav {
-    width: 100%;
-    justify-content: center;
   }
 }
