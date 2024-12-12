@@ -48,7 +48,7 @@
 .subtotal span {
   font-size: 25px;
   font-weight: 700;
-  color: #ffb800;
+  color: #00176a;
 }
 
 .right {
@@ -341,40 +341,71 @@ section textarea:hover {
   font-size: 14px;
 }
 
-@media screen and (max-width: 768px) {
-  .input-data {
+@media screen and (max-width: 1200px) {
+  .main_list_container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left,
+  .right {
     width: 100%;
-    padding: 0 15px;
+    padding: 20px;
+  }
+
+  .right {
+    border-left: none;
+    border-top: 3px solid #eaeff5;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .path-container {
+    padding: 20px;
+    font-size: 16px;
+    gap: 12px;
+  }
+
+  .subtotal {
+    font-size: 18px;
+  }
+
+  .subtotal span {
+    font-size: 22px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 14px;
   }
 
   .finish {
     width: 100%;
-    margin: 20px 15px;
   }
 
   .product-price {
     flex-direction: column;
     align-items: flex-start;
-    gap: 5px;
-    margin: 8px 0;
-  }
-
-  .current-price {
-    font-size: 18px;
-  }
-
-  .original-price {
-    font-size: 12px;
+    gap: 6px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .finish {
-    height: 35px;
+  .path-container {
+    padding: 15px;
     font-size: 14px;
+    gap: 8px;
   }
 
-  .current-price {
-    font-size: 16px;
+  .others-btns {
+    flex-direction: column;
+  }
+
+  .checkout,
+  .share {
+    width: 100%;
   }
 }

@@ -6,6 +6,7 @@ import { Product } from '../../interface/product.interface';
 import { FiltersComponent } from '../../shared/filters/filters.component';
 import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-product-card.component';
 import { ToastNotificationComponent } from '../../shared/toast-notification/toast-notification.component';
+import { HowWeWorkComponent } from '../../components/how-we-work/how-we-work.component';
 
 @Component({
   selector: 'app-all-products',
@@ -15,6 +16,7 @@ import { ToastNotificationComponent } from '../../shared/toast-notification/toas
     RouterModule,
     CommonModule,
     ShopProductCardComponent,
+    HowWeWorkComponent,
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',
@@ -28,29 +30,6 @@ export class AllProductsComponent implements OnInit {
   public query_search: string | null = null;
 
   public currentPage: number = 0;
-
-  public info_texts: { icon: string; title: string; subtitle: string }[] = [
-    {
-      icon: 'trophy.svg',
-      title: 'High Quality',
-      subtitle: 'crafted from top materials',
-    },
-    {
-      icon: 'done.svg',
-      title: 'Warranty Protection',
-      subtitle: 'Over 2 years',
-    },
-    {
-      icon: 'delivery.svg',
-      title: 'Free Shipping',
-      subtitle: 'Order over 150$',
-    },
-    {
-      icon: 'support.svg',
-      title: '24/7 Support',
-      subtitle: 'Dedicated support',
-    },
-  ];
 
   ngOnInit(): void {
     this.updateProductList();

@@ -40,17 +40,8 @@
       }
     </ul>
   </div>
-  <div class="info-texts">
-    @for (item of info_texts; track $index) {
-    <div class="info-item">
-      <img [src]="'/icons/' + item.icon" [alt]="item.title" />
-      <span>
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.subtitle }}</p>
-      </span>
-    </div>
-    }
-  </div>
+
+  <how-we-work></how-we-work>
 </section>
 
 <ng-template #emptyList>

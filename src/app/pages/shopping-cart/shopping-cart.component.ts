@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EmptyCartComponent } from '../../components/empty-cart/empty-cart.component';
 import { WishListService } from '../../services/favorite.service';
 import { LitterProductCardComponent } from '../../shared/litter-product-card/litter-product-card.component';
+import { HowWeWorkComponent } from '../../components/how-we-work/how-we-work.component';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,6 +16,7 @@ import { LitterProductCardComponent } from '../../shared/litter-product-card/lit
     CommonModule,
     EmptyCartComponent,
     LitterProductCardComponent,
+    HowWeWorkComponent,
   ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css',

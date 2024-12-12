@@ -1,0 +1,38 @@
+.info-texts {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #00176a, #34348e);
+  color: white;
+  padding: 80px 80px;
+  margin-top: 50px;
+}
+
+.info-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.info-item img {
+  width: 80px;
+  height: 80px;
+}
+
+.info-item span {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.info-item span h3 {
+  font-size: 30px;
+  color: #ffb800;
+  font-weight: 500;
+}
+
+.info-item span p {
+  font-size: 20px;
+  font-weight: 400;
+}

@@ -10,11 +10,12 @@ import { WishListService } from '../../services/favorite.service';
 import { CartService } from '../../services/cart.service';
 import { RouterModule } from '@angular/router';
 import { Product } from '../../interface/product.interface';
+import { HowWeWorkComponent } from '../../components/how-we-work/how-we-work.component';
 
 @Component({
   selector: 'app-whish-list',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, HowWeWorkComponent],
 
   templateUrl: './wish-list.component.html',
   styleUrl: './wish-list.component.css',

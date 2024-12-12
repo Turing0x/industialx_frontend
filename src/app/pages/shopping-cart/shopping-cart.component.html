@@ -126,11 +126,7 @@
               <img src="/icons/trash.svg" alt="Delete" />
               Remove</span
             >
-            <span
-              class="details"
-              [routerLink]="['/shop']"
-              [queryParams]="{ id: product._id }"
-            >
+            <span class="details" [routerLink]="['/shop/', product._id]">
               <img src="/icons/info-square-rounded.svg" alt="Details" />
 
               Details</span
@@ -165,6 +161,7 @@
         </p>
       </span>
 
+      @if(wishlist_list.length !== 0) {
       <div class="wishlist-container">
         @for (product of wishlist_list; track $index) {
         <litter-product-card
@@ -173,6 +170,16 @@
         ></litter-product-card>
         }
       </div>
+      } @else {
+
+      <div>
+        <p>Your wishlist is empty</p>
+        <p>Add products to your wishlist to see them here</p>
+      </div>
+
+      }
     </section>
   </section>
 </section>
+
+<how-we-work></how-we-work>
