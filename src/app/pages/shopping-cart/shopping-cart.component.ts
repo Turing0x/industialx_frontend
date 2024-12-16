@@ -19,7 +19,7 @@ import { HowWeWorkComponent } from '../../components/how-we-work/how-we-work.com
     HowWeWorkComponent,
   ],
   templateUrl: './shopping-cart.component.html',
-  styleUrl: './shopping-cart.component.css',
+  styleUrl: './shopping-cart.component.min.css',
 })
 export class ShoppingCartComponent implements OnInit {
   private cartService = inject(CartService);

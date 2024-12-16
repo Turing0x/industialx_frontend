@@ -7,7 +7,7 @@ import { SubtitleComponent } from '../subtitle/subtitle.component';
   standalone: true,
   imports: [CommonModule, SubtitleComponent],
   templateUrl: './our-range.component.html',
-  styleUrl: './our-range.component.css',
+  styleUrl: './our-range.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OurRangeComponent {}

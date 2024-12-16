@@ -16,7 +16,7 @@ import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-pr
   standalone: true,
   imports: [ShopProductCardComponent, AddBtnComponent],
   templateUrl: './related-products.component.html',
-  styleUrl: './related-products.component.css',
+  styleUrl: './related-products.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RelatedProductsComponent implements OnInit {

@@ -15,14 +15,9 @@ import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-pr
 @Component({
   selector: 'landing-offers',
   standalone: true,
-  imports: [
-    CommonModule,
-    AddBtnComponent,
-    SubtitleComponent,
-    ShopProductCardComponent,
-  ],
+  imports: [CommonModule, SubtitleComponent, ShopProductCardComponent],
   templateUrl: './offers.component.html',
-  styleUrl: './offers.component.css',
+  styleUrl: './offers.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OffersComponent implements OnInit {

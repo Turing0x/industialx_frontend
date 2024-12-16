@@ -9,7 +9,7 @@ import {
   standalone: true,
   imports: [],
   templateUrl: './empty-cart.component.html',
-  styleUrl: './empty-cart.component.css',
+  styleUrl: './empty-cart.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {

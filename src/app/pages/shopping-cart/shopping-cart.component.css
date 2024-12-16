@@ -131,11 +131,6 @@
   height: 22px;
 }
 
-.totals {
-  font-size: 18px;
-  font-weight: 500;
-}
-
 .each-prod {
   border: 2px solid #f2f5fa;
   display: flex;
@@ -217,110 +212,6 @@
   color: black;
 }
 
-/* Tamaño del scroll */
-.list_box::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Estilos barra (thumb) de scroll */
-.list_box::-webkit-scrollbar-thumb {
-  background: #4b5974;
-  border-radius: 2px;
-}
-
-.list_box::-webkit-scrollbar-thumb:active {
-  background-color: #999999;
-}
-
-.list_box::-webkit-scrollbar-thumb:hover {
-  background: #999999;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilos track de scroll */
-.list_box::-webkit-scrollbar-track {
-  background: #e1e1e1;
-  border-radius: 4px;
-}
-
-.list_box::-webkit-scrollbar-track:hover,
-.list_box::-webkit-scrollbar-track:active {
-  background: #d4d4d4;
-}
-
-.pdf {
-  color: #54575e;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1px solid #edeef0;
-  padding: 5px 15px;
-  background-color: #f7f8fc;
-}
-
-.pdf:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-section input {
-  padding-left: 10px;
-  height: 35px;
-  border: 1px solid gray;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-section input::placeholder {
-  font-size: 16px;
-}
-
-section input:hover {
-  border: 1px solid #09f;
-}
-
-section textarea {
-  padding: 10px;
-  border: 1px solid gray;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-section textarea::placeholder {
-  font-size: 16px;
-}
-
-section textarea:hover {
-  border: 1px solid #09f;
-}
-
-.input-data {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.finish {
-  align-items: center;
-  background-color: #438fff;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  margin-top: 30px;
-  width: 300px;
-}
-
-.finish:hover {
-  box-shadow: 0 0 3px rgba(0, 0, 0, 1);
-}
-
-* {
-  user-select: none;
-}
-
 .product-price {
   display: flex;
   align-items: center;
@@ -380,10 +271,6 @@ section textarea:hover {
 
   .subtitle {
     font-size: 14px;
-  }
-
-  .finish {
-    width: 100%;
   }
 
   .product-price {

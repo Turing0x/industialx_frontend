@@ -7,7 +7,7 @@ import { BuyBtnComponent } from '../../shared/buy-btn/buy-btn.component';
   standalone: true,
   imports: [CommonModule, BuyBtnComponent],
   templateUrl: './most-wanted.component.html',
-  styleUrl: './most-wanted.component.css',
+  styleUrl: './most-wanted.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MostWantedComponent {}

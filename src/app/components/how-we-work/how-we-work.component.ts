@@ -9,7 +9,7 @@ import {
   standalone: true,
   imports: [],
   templateUrl: './how-we-work.component.html',
-  styleUrl: './how-we-work.component.css',
+  styleUrl: './how-we-work.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })

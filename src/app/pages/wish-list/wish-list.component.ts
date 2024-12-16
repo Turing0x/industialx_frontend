@@ -18,7 +18,7 @@ import { HowWeWorkComponent } from '../../components/how-we-work/how-we-work.com
   imports: [RouterModule, CommonModule, HowWeWorkComponent],
 
   templateUrl: './wish-list.component.html',
-  styleUrl: './wish-list.component.css',
+  styleUrl: './wish-list.component.min.css',
 })
 export class WishListComponent implements OnInit {
   private platform = inject(PLATFORM_ID);

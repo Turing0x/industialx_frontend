@@ -19,7 +19,7 @@ import { HowWeWorkComponent } from '../../components/how-we-work/how-we-work.com
     HowWeWorkComponent,
   ],
   templateUrl: './all-products.component.html',
-  styleUrl: './all-products.component.css',
+  styleUrl: './all-products.component.min.css',
 })
 export class AllProductsComponent implements OnInit {
   private platform = inject(PLATFORM_ID);

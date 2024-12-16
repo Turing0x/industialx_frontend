@@ -19,7 +19,7 @@ import { ToastService } from '../../services/toast-service.service';
     ToastNotificationComponent,
   ],
   templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css',
+  styleUrl: './product-details.component.min.css',
 })
 export class ProductDetailsComponent implements OnInit {
   private toastService = inject(ToastService);

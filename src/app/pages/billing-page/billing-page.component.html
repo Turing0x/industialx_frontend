@@ -1,0 +1,139 @@
+
+<div class="body">
+
+  <div class="form">
+
+    <h1 class="title">Billing details</h1>
+
+    <form [formGroup]="myForm">
+
+      <div class="name">
+        <div class="example">
+          <label>First Name</label>
+          <input type="text" formControlName="fName">
+          <span *ngIf="isValidField('fName')" class="error">First name
+            required</span>
+        </div>
+
+        <div class="example">
+          <label>Last Name</label>
+          <input type="text" formControlName="lName">
+          <span *ngIf="isValidField('lName')" class="error">Last name
+            required</span>
+        </div>
+
+      </div>
+
+      <div class="example2">
+        <label>Company Name(Optional)</label>
+        <input type="text" formControlName="companyName">
+
+        <label>Country/Region</label>
+        <input type="text" formControlName="country">
+        <span *ngIf="isValidField('country')" class="error">Country
+          required</span>
+
+        <label>Street address</label>
+        <input type="text" formControlName="streetAdd">
+        <span *ngIf="isValidField('streetAdd')" class="error">Street address
+          required</span>
+
+        <label>Town/City</label>
+        <input type="text" formControlName="town">
+        <span *ngIf="isValidField('town')" class="error">Town/City
+          required</span>
+
+        <label>Province</label>
+        <input type="text" formControlName="province">
+        <span *ngIf="isValidField('province')" class="error">Province
+          required</span>
+
+        <label>Zip code</label>
+        <input type="text" formControlName="zipCode">
+        <span *ngIf="isValidField('zipCode')" class="error">Zip code
+          required</span>
+
+        <label>Phone</label>
+        <input type="tel" formControlName="phone">
+        <span *ngIf="isValidField('phone')" class="error">Phone
+          required</span>
+
+        <label>Email address</label>
+        <input type="email" formControlName="email">
+        <span *ngIf="isValidField('email')" class="error">Correct email
+          required</span>
+
+        <input type="text" placeholder="Aditional information"
+          formControlName="messege">
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="details">
+
+    <div class="heads">
+
+      <div class="head1">
+        <h1>Product</h1>
+
+        <!-- TODO @for with the product list PRODUCT NAME and Cuantity -->
+        <ul>
+          <li>Asgard sofa x 1</li>
+        </ul>
+
+        <h2>Subtotal</h2>
+
+        <h2>Total</h2>
+
+      </div>
+
+      <div class="head2">
+        <h1>Subtotal</h1>
+
+        <!-- TODO @for with the product list PRICE -->
+        <ul>
+          <li>Rs. 250,000.00</li>
+        </ul>
+
+        <!--  Subtotal price -->
+        <h2>Rs. 250,000.00</h2>
+
+        <!-- Total price here -->
+        <span class="total-number">Rs. 250,000.00</span>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="payment-method">
+
+      <div class="radio">
+        <input type="radio" name="payment">
+        <label>Direct bank transfer</label>
+      </div>
+
+      <div class="radio">
+        <input type="radio" name="payment">
+        <label>Cash On Delivery</label>
+      </div>
+
+      <p class="privacy-aclaration">Your personal data will be used to support
+        your
+        experience<br>throughout this website,
+        to manage access to your account, and<br>for other purposes described in
+        our <a>privacy policy</a>.
+      </p>
+
+    </div>
+
+    <div class="button">
+      <button (click)="onSubmit()">Place order</button>
+    </div>
+
+  </div>
+
+</div>

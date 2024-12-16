@@ -15,10 +15,9 @@ import { ToastNotificationComponent } from '../../shared/toast-notification/toas
     OurRangeComponent,
     OffersComponent,
     MostWantedComponent,
-    ToastNotificationComponent,
   ],
   templateUrl: './landing-page.component.html',
-  styleUrl: './landing-page.component.css',
+  styleUrl: './landing-page.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingPageComponent {}
