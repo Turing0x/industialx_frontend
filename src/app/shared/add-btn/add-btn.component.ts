@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './add-btn.component.html',
-  styleUrl: './add-btn.component.css',
+  styleUrl: './add-btn.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddBtnComponent {

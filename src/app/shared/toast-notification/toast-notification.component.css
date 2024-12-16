@@ -14,27 +14,22 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   color: #fff;
   animation: fade-in 0.3s ease-in-out;
+}
 
-  &.success {
-    background-color: #43d787;
-  }
+.toast.success {
+  background-color: #43d787;
+}
 
-  &.error {
-    background-color: #f9461c;
-  }
+.toast.error {
+  background-color: #f9461c;
+}
 
-  &.info {
-    background-color: #0086d6;
-  }
+.toast.info {
+  background-color: #0086d6;
+}
 
-  &.warning {
-    background-color: #ffbb00;
-  }
-
-  &.close {
-    display: flex;
-    justify-content: end;
-  }
+.toast.warning {
+  background-color: #ffbb00;
 }
 
 .toast-header {

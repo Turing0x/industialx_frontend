@@ -16,7 +16,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   standalone: true,
   imports: [RouterLinkActive, RouterLink, CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  styleUrl: './navbar.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnInit {

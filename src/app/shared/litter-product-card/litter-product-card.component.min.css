@@ -1,0 +1,1 @@
+.shop-fav{display:flex;align-items:center;gap:10px}.shop-fav button{background:0 0;border:none;cursor:pointer}.shop-fav img,.shop-fav svg{width:30px;height:30px;color:#d0d0d0;transition:color .2s ease-in-out}.shop-fav button:hover svg{color:#000}.shop-fav button:hover img{color:#d0d0d0}.is-fav svg,.is-in-cart svg{color:#1a237e}

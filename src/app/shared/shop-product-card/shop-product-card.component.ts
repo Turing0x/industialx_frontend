@@ -18,7 +18,7 @@ import { ToastService } from '../../services/toast-service.service';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './shop-product-card.component.html',
-  styleUrl: './shop-product-card.component.css',
+  styleUrl: './shop-product-card.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShopProductCardComponent implements OnDestroy {

@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './buy-btn.component.html',
-  styleUrl: './buy-btn.component.css',
+  styleUrl: './buy-btn.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BuyBtnComponent {}

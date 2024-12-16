@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { Product } from '../../interface/product.interface';
 import { FiltersComponent } from '../../shared/filters/filters.component';
 import { ShopProductCardComponent } from '../../shared/shop-product-card/shop-product-card.component';
-import { ToastNotificationComponent } from '../../shared/toast-notification/toast-notification.component';
 import { HowWeWorkComponent } from '../../components/how-we-work/how-we-work.component';
 
 @Component({

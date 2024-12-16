@@ -16,7 +16,7 @@ import { ToastService } from '../../services/toast-service.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './litter-product-card.component.html',
-  styleUrl: './litter-product-card.component.css',
+  styleUrl: './litter-product-card.component.min.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LitterProductCardComponent {

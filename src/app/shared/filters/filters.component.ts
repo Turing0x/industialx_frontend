@@ -15,7 +15,7 @@ import { filters_form_gruop } from '../../helpers/filters-form.formgroup';
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './filters.component.html',
-  styleUrl: './filters.component.css',
+  styleUrl: './filters.component.min.css',
 })
 export class FiltersComponent {
   private platform = inject(PLATFORM_ID);

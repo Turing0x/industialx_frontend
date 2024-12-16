@@ -1,0 +1,1 @@
+button{width:210px;height:70px;border-radius:3px;background-color:#ffb800;border:none;color:#fff;font-size:18px;font-weight:600;letter-spacing:.1em;cursor:pointer;transition:scale .3s}@media screen and (max-width:768px){button{width:180px;height:60px;font-size:16px}}@media screen and (max-width:480px){button{width:150px;height:50px;font-size:14px}}
