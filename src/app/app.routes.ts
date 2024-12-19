@@ -7,6 +7,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { WishListComponent } from './pages/wish-list/wish-list.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { RegisterPageComponent } from './pages/register-page/register.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 export const routes: Routes = [
   {
@@ -48,5 +50,15 @@ export const routes: Routes = [
     path: 'contact',
     component: ContactPageComponent,
     title: 'Contact | Industrial X',
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent,
+    title: 'Login | Industrial X',
+  },
+  {
+    path: 'register',
+    component: RegisterPageComponent,
+    title: 'Register | Industrial X',
   },
 ];

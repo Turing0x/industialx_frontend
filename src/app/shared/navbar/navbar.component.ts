@@ -5,11 +5,13 @@ import {
   inject,
   OnInit,
   PLATFORM_ID,
+  signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Product } from '../../interface/product.interface';
 import { CartService } from '../../services/cart.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'shared-navbar',
@@ -24,10 +26,15 @@ export class NavbarComponent implements OnInit {
   private platform = inject(PLATFORM_ID);
 
   private cartService = inject(CartService);
+  private authService = inject(AuthService);
 
   public prods_in_cart: Product[] = [];
 
+  public isLoggedIn = signal<boolean>(false);
+
   ngOnInit(): void {
+    this.isLoggedIn.set(this.authService.isLoggedIn());
+
     this.cartService.allProducts.subscribe((prods) => {
       this.prods_in_cart = prods;
       this.cd.detectChanges();

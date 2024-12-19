@@ -1,0 +1,92 @@
+<div class="register-container">
+  <div class="logo-section">
+    <h1>Create your Account</h1>
+    <p class="welcome-text">
+      Welcome back! Select method to create your account:
+    </p>
+
+    <div class="social-buttons">
+      <button
+        type="button"
+        class="social-btn google-btn"
+        (click)="signInWithGoogle()"
+      >
+        <img src="/icons/google.svg" alt="Google icon" />
+        Google
+      </button>
+      <button
+        type="button"
+        class="social-btn facebook-btn"
+        (click)="signInWithFacebook()"
+      >
+        <img src="/icons/facebook.svg" alt="Facebook icon" />
+        Facebook
+      </button>
+    </div>
+  </div>
+  <div class="form-section">
+    <div class="form-container">
+      <form
+        #registerForm="ngForm"
+        (ngSubmit)="onSubmit(registerForm)"
+        class="login-form"
+      >
+        <div class="form-group">
+          <div class="input-with-icon">
+            <img src="/icons/email.svg" alt="Email icon" class="input-icon" />
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              name="email"
+              [(ngModel)]="registerData().email"
+              required
+              autocomplete="off"
+              email
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-with-icon">
+            <img
+              src="/icons/password.svg"
+              alt="Password icon"
+              class="input-icon"
+            />
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              name="password"
+              [(ngModel)]="registerData().password"
+              required
+              autocomplete="off"
+              minlength="6"
+            />
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember" ngModel />
+            <label for="remember">Remember me</label>
+          </div>
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-login"
+          [disabled]="registerForm.invalid || isLoading()"
+        >
+          {{ isLoading() ? "Loading..." : "Log in" }}
+        </button>
+
+        <p class="signup-prompt">
+          Already have an account? <a href="#">Log in</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
