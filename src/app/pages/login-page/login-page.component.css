@@ -176,6 +176,7 @@
 }
 
 .signup-prompt a:hover {
+  cursor: pointer;
   color: #1d4ed8;
 }
 

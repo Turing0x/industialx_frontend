@@ -37,7 +37,7 @@ export class RegisterPageComponent {
     try {
       this.isLoading.set(true);
       this.authService.register(this.registerData());
-      await this.router.navigate(['/dashboard']);
+      // await this.router.navigate(['/']);
     } catch (error) {
       console.error('Registration failed:', error);
       // Handle error appropriately
@@ -50,7 +50,7 @@ export class RegisterPageComponent {
     try {
       this.isLoading.set(true);
       this.authService.signInWithGoogle();
-      await this.router.navigate(['/dashboard']);
+      await this.router.navigate(['/']);
     } catch (error) {
       console.error('Google sign in failed:', error);
       // Handle error appropriately
@@ -62,8 +62,8 @@ export class RegisterPageComponent {
   async signInWithFacebook(): Promise<void> {
     try {
       this.isLoading.set(true);
-      await this.authService.signInWithFacebook();
-      await this.router.navigate(['/dashboard']);
+      this.authService.signInWithFacebook();
+      await this.router.navigate(['/']);
     } catch (error) {
       console.error('Facebook sign in failed:', error);
       // Handle error appropriately

@@ -46,29 +46,6 @@ export class AuthService {
     return false;
   }
 
-  register(registerData: User): Observable<any> {
-    return this.http
-      .post<any>(`${this.baseUrl}/register`, registerData, {
-        headers: this.httpHeaders,
-      })
-      .pipe(
-        map((response) => {
-          if (isPlatformBrowser(this.platform)) {
-            localStorage.setItem('token', response.token);
-          }
-          return response;
-        }),
-        catchError((error) => {
-          Swal.fire(
-            'Registration Failed',
-            error.error?.message || 'An error occurred during registration',
-            'error'
-          );
-          return throwError(() => error);
-        })
-      );
-  }
-
   private handleAuthResponse(errorTitle: string) {
     return {
       success: (response: any) => {
@@ -87,6 +64,17 @@ export class AuthService {
         return throwError(() => error);
       },
     };
+  }
+
+  register(registerData: User): Observable<any> {
+    return this.http
+      .post<any>(`${this.baseUrl}/register`, registerData, {
+        headers: this.httpHeaders,
+      })
+      .pipe(
+        map(this.handleAuthResponse('Registration').success),
+        catchError(this.handleAuthResponse('Registration').error)
+      );
   }
 
   registerWithGoogle(): Observable<any> {
